@@ -5,6 +5,11 @@ package fr.iutvalence.java.Notit;
  * @author G19
  */
 
-public class GeneralNote {
+public class GeneralNote extends Note{
+
+	protected GeneralNote(int number, String title, String content) {
+		super(number, title, content);
+		// TODO Auto-generated constructor stub
+	}
 
 }

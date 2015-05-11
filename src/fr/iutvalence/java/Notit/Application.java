@@ -5,5 +5,12 @@ package fr.iutvalence.java.Notit;
  * @author G19
  */
 public class Application {
+	
+	public void afficherAccueil(){
+		//envoie Notes générales
+		//envoie notes jours
+		
+		
+	}
 
 }
