@@ -7,7 +7,7 @@ package fr.iutvalence.java.Notit;
 
 public class GeneralNote extends Note{
 
-	protected GeneralNote(int number, String title, String content) {
+	public GeneralNote(int number, String title, String content) {
 		super(number, title, content);
 		// TODO Auto-generated constructor stub
 	}
