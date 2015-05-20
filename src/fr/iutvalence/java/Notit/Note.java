@@ -35,6 +35,8 @@ public abstract class Note {
 		this.content = content;
 	}
 
-	
+	public String toString(){
+		return this.number+this.title+this.content;
+	}
 
 }

@@ -17,9 +17,9 @@ public class NoteList {
 		int numero = 0;
 		String title = "";
 		String contenu = "";
-		HashSet<GeneralNote> listOfGeneralNote = new HashSet<GeneralNote>();
+		this.listOfGeneralNote = new HashSet<GeneralNote>();
 		File[] files = arrayOfNote(true);
-		for(int index =0; index < files.length ; index++){
+		for(int index = 0; index < files.length ; index++){
 			FileReader flux = new FileReader(files[index]);
 			int lettre;
 			while ((lettre = flux.read()) != 13){
@@ -27,11 +27,12 @@ public class NoteList {
 			}
 			numero = Integer.parseInt(numTemp);
 			while((lettre = flux.read()) != 13){
-				title += lettre;
+				title += (char)lettre;
 			}
 			while((lettre = flux.read()) != -1){
-				contenu += lettre;
+				contenu += (char)lettre;
 			}
+
 			this.listOfGeneralNote.add(new GeneralNote(numero,title,contenu));
 		}
 	}
@@ -63,11 +64,11 @@ public class NoteList {
 	private File[] arrayOfNote(boolean b){
 		File[] files = null;
 		if (b){
-			File repertoire = new File("Not'it/GeneralNotes");
+			File repertoire = new File("GeneralNotes");
 			files = repertoire.listFiles();
 		}
 		else{
-			File repertoire = new File("Not'it/Notes");
+			File repertoire = new File("Notes");
 			files = repertoire.listFiles();
 		}
 		return files;
