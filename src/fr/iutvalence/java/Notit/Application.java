@@ -7,7 +7,7 @@ package fr.iutvalence.java.Notit;
 public class Application {
 	
 	public void afficherAccueil(){
-		//envoie Notes générales
+		//envoie Notes gÃ©nÃ©rales
 		//envoie notes jours
 		
 		
