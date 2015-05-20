@@ -17,7 +17,7 @@ public class NoteList {
 		int numero = 0;
 		String title = "";
 		String contenu = "";
-		HashSet listOfGeneralNote = new HashSet<GeneralNote>();
+		HashSet<GeneralNote> listOfGeneralNote = new HashSet<GeneralNote>();
 		File[] files = arrayOfNote(true);
 		for(int index =0; index < files.length ; index++){
 			FileReader flux = new FileReader(files[index]);
@@ -32,7 +32,7 @@ public class NoteList {
 			while((lettre = flux.read()) != -1){
 				contenu += lettre;
 			}
-			listOfGeneralNote.add(new GeneralNote(numero,title,contenu));
+			this.listOfGeneralNote.add(new GeneralNote(numero,title,contenu));
 		}
 	}
 	
@@ -41,7 +41,7 @@ public class NoteList {
 		int numero = 0;
 		String title = "";
 		String contenu = "";
-		HashSet listOfGeneralNote = new HashSet<GeneralNote>();
+		HashSet listOfDayNote = new HashSet<GeneralNote>();
 		File[] files = arrayOfNote(false);
 		for(int index =0; index < files.length ; index++){
 			FileReader flux = new FileReader(files[index]);
@@ -71,5 +71,9 @@ public class NoteList {
 			files = repertoire.listFiles();
 		}
 		return files;
+	}
+	
+	public Set<GeneralNote> getlistOfGeneralNote(){
+		return this.listOfGeneralNote;
 	}
 }
