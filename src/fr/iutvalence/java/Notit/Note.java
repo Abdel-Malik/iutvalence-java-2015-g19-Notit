@@ -1,12 +1,13 @@
 package fr.iutvalence.java.Notit;
 
+import java.io.File;
+
 /**
  * A Note.
  * 
  * @author G19
  */
-public abstract class Note
-{
+public abstract class Note {
 
 	/**
 	 * Id of note.
@@ -28,8 +29,7 @@ public abstract class Note
 	 * @param title
 	 * @param content
 	 */
-	protected Note(int number, String title, String content)
-	{
+	protected Note(int number, String title, String content) {
 		this.number = number;
 		this.title = title;
 		this.content = content;
@@ -41,8 +41,7 @@ public abstract class Note
 	 * 
 	 * @return title
 	 */
-	public String getTitle()
-	{
+	public String getTitle() {
 		return title;
 	}
 
@@ -51,8 +50,7 @@ public abstract class Note
 	 * 
 	 * @param title
 	 */
-	public void setTitle(String title)
-	{
+	public void setTitle(String title) {
 		this.title = title;
 	}
 
@@ -61,8 +59,7 @@ public abstract class Note
 	 * 
 	 * @return content
 	 */
-	public String getContent()
-	{
+	public String getContent() {
 		return content;
 	}
 
@@ -71,17 +68,25 @@ public abstract class Note
 	 * 
 	 * @param content
 	 */
-	public void setContent(String content)
-	{
+	public void setContent(String content) {
 		this.content = content;
 	}
 
 	/**
 	 * displays the id, the title and the content of a note.
 	 */
-	public String toString()
-	{
+	public String toString() {
 		return this.number + this.title + this.content;
 	}
 
+	/**
+	 * To Edit the note.
+	 */
+	// public boolean EditNote(String path) {
+	// if (!Path.checkPath(path)){
+	// Path.createPath(path);
+	// File file = new File(path +)}
+	// File file = new File(path + (Path.maxFileInPath(path) + 1));
+	// return false;
+	// }
 }
