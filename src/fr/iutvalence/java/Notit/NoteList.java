@@ -21,6 +21,10 @@ public class NoteList {
 		File[] files = arrayOfNote(true);
 		
 		for(int index = 0; index < files.length ; index++){
+			numTemp = "";
+			numero = 0;
+			title = "";
+			contenu = "";
 			FileReader flux = new FileReader(files[index]);
 			int lettre;
 			while ((lettre = flux.read()) != 13){

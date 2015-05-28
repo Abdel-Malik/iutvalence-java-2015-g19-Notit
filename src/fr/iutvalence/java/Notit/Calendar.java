@@ -3,6 +3,8 @@ package fr.iutvalence.java.Notit;
 import java.util.GregorianCalendar;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 /**
  * The calendar.
@@ -26,7 +28,7 @@ public class Calendar {
 			nbDaysInMonth = firstDayOfMonth.getActualMaximum(GregorianCalendar.DAY_OF_MONTH);
 		}
 	    int nbDay = 1;
-	    HashSet<Date> listOfDays = new HashSet<Date>();
+	    SortedSet<Date> listOfDays = new TreeSet<Date>();
 	    while(nbDay <= nbDaysInMonth){
 	    	listOfDays.add(new Date(year, month, nbDay));
 	    	nbDay++;
