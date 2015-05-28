@@ -49,25 +49,27 @@ public class NoteList {
 		String contenu = "";
 		this.listOfDayNote = new HashSet<DayNote>();
 		File[] files = arrayOfDayNote(date);
-		for(int index =0; index < files.length ; index++){
-			numTemp = "";
-			numero = 0;
-			title = "";
-			contenu = "";
-			FileReader flux = new FileReader(files[index]);
-			int lettre;
-			
-			while ((lettre = flux.read()) != 13){
-				numTemp += (char)(lettre);
+		if(files != null){
+			for(int index =0; index < files.length ; index++){
+				numTemp = "";
+				numero = 0;
+				title = "";
+				contenu = "";
+				FileReader flux = new FileReader(files[index]);
+				int lettre;
+				
+				while ((lettre = flux.read()) != 13){
+					numTemp += (char)(lettre);
+				}
+				numero = Integer.parseInt(numTemp);
+				while((lettre = flux.read()) != 13){
+					title += (char)lettre;
+				}
+				while((lettre = flux.read()) != -1){
+					contenu += (char)lettre;
+				}
+				listOfDayNote.add(new DayNote(numero,title,contenu,date));
 			}
-			numero = Integer.parseInt(numTemp);
-			while((lettre = flux.read()) != 13){
-				title += (char)lettre;
-			}
-			while((lettre = flux.read()) != -1){
-				contenu += (char)lettre;
-			}
-			listOfDayNote.add(new DayNote(numero,title,contenu,date));
 		}
 	}
 	
