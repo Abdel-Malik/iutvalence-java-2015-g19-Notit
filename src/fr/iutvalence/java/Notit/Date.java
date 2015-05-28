@@ -45,6 +45,6 @@ public class Date extends GregorianCalendar
 	public String toString()
 	{
 		return this.get(DAY_OF_MONTH) + "/" + this.get(MONTH) + "/"
-				+ this.get(YEAR) + " : " + this.listOfNote;
+				+ this.get(YEAR) + " : " + this.listOfNote.size();
 	}
 }
