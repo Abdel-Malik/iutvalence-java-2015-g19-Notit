@@ -1,42 +1,87 @@
 package fr.iutvalence.java.Notit;
 
 /**
- * A note.
+ * A Note.
+ * 
  * @author G19
  */
+public abstract class Note
+{
 
-public abstract class Note {
-	
+	/**
+	 * Id of note.
+	 */
 	private final int number;
+	/**
+	 * Title of note.
+	 */
 	private String title;
-	
+	/**
+	 * The content of a note.
+	 */
 	private String content;
-	
-	protected Note(int number, String title, String content){
+
+	/**
+	 * Note's constructor.
+	 * 
+	 * @param number
+	 * @param title
+	 * @param content
+	 */
+	protected Note(int number, String title, String content)
+	{
 		this.number = number;
 		this.title = title;
 		this.content = content;
-		
+
 	}
-	
-	public String getTitle() {
+
+	/**
+	 * Getter to get the title of the note.
+	 * 
+	 * @return title
+	 */
+	public String getTitle()
+	{
 		return title;
 	}
 
-	public void setTitle(String title) {
+	/**
+	 * Setter to set the title of the note.
+	 * 
+	 * @param title
+	 */
+	public void setTitle(String title)
+	{
 		this.title = title;
 	}
 
-	public String getContent() {
+	/**
+	 * Getter to get the content of the note.
+	 * 
+	 * @return content
+	 */
+	public String getContent()
+	{
 		return content;
 	}
 
-	public void setContent(String content) {
+	/**
+	 * Setter to set content of the note.
+	 * 
+	 * @param content
+	 */
+	public void setContent(String content)
+	{
 		this.content = content;
 	}
 
-	public String toString(){
-		return this.number+this.title+this.content;
+	/**
+	 * displays the id, the title and the content of a note.
+	 */
+	public String toString()
+	{
+		return this.number + this.title + this.content;
 	}
 
 }

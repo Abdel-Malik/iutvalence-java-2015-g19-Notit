@@ -20,6 +20,7 @@ public class Date extends GregorianCalendar
 
 	/**
 	 * The Date's constructor.
+	 * 
 	 * @param year
 	 * @param month
 	 * @param day
