@@ -2,7 +2,6 @@ package fr.iutvalence.java.Notit;
 
 import java.io.IOException;
 import java.util.Set;
-
 import fr.iutvalence.java.Notit.swing.MyJFrame;
 
 public class Main
