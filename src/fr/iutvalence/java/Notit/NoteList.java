@@ -18,7 +18,7 @@ public class NoteList {
 		String title = "";
 		String contenu = "";
 		this.listOfGeneralNote = new HashSet<GeneralNote>();
-		File[] files = arrayOfNote(true);
+		File[] files = arrayOfGeneralNote();
 		
 		for(int index = 0; index < files.length ; index++){
 			numTemp = "";
@@ -48,39 +48,43 @@ public class NoteList {
 		String title = "";
 		String contenu = "";
 		this.listOfDayNote = new HashSet<DayNote>();
-		File[] files = arrayOfNote(false);
-		
-		for(int index =0; index < files.length ; index++){
-			numTemp = "";
-			numero = 0;
-			title = "";
-			contenu = "";
-			String name = files[index].getName();
-			FileReader flux = new FileReader(files[index]);
-			int lettre;
-			
-			while ((lettre = flux.read()) != 13){
-				numTemp += (char)(lettre);
+		File[] files = arrayOfDayNote(date);
+		if(files != null){
+			for(int index =0; index < files.length ; index++){
+				numTemp = "";
+				numero = 0;
+				title = "";
+				contenu = "";
+				FileReader flux = new FileReader(files[index]);
+				int lettre;
+				
+				while ((lettre = flux.read()) != 13){
+					numTemp += (char)(lettre);
+				}
+				numero = Integer.parseInt(numTemp);
+				while((lettre = flux.read()) != 13){
+					title += (char)lettre;
+				}
+				while((lettre = flux.read()) != -1){
+					contenu += (char)lettre;
+				}
+				listOfDayNote.add(new DayNote(numero,title,contenu,date));
 			}
-			numero = Integer.parseInt(numTemp);
-			while((lettre = flux.read()) != 13){
-				title += (char)lettre;
-			}
-			while((lettre = flux.read()) != -1){
-				contenu += (char)lettre;
-			}
-			listOfDayNote.add(new DayNote(numero,title,contenu,date));
 		}
 	}
 	
-	private File[] arrayOfNote(boolean b){
+	private File[] arrayOfGeneralNote(){
 		File[] files = null;
-		if (b){
-			File repertoire = new File("GeneralNotes");
-			files = repertoire.listFiles();
-		}
-		else{
-			File repertoire = new File("Notes");
+		File repertoire = new File("GeneralNotes");
+		files = repertoire.listFiles();
+		return files;
+	}
+	
+	private File[] arrayOfDayNote(Date date){
+		File[] files = null;
+		String pathName = "Notes/"+date.get(date.YEAR)+"-"+date.get(date.MONTH)+"-"+date.get(date.DAY_OF_MONTH);
+		File repertoire = new File(pathName);
+		if(repertoire.exists()){
 			files = repertoire.listFiles();
 		}
 		return files;

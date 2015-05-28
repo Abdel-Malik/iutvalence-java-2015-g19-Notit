@@ -3,6 +3,7 @@ package fr.iutvalence.java.Notit.swing;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -16,8 +17,9 @@ public class HomePageFrame extends JFrame{
 
 	/**
 	 * Constructor of the typical frame.
+	 * @throws IOException 
 	 */
-	public HomePageFrame(){
+	public HomePageFrame() throws IOException{
 		
 		  Dimension buttonDimension = new Dimension(200,50);
 		  Dimension labelDimension = new Dimension(824,50);

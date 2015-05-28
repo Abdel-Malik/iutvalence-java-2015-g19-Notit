@@ -13,7 +13,7 @@ public class Main
 		
 		HomePageFrame intermarche = new HomePageFrame();
 		// 0: January, 11:December 
-		Calendar calendar = new Calendar(0, 2015);
+		Calendar calendar = new Calendar(5, 2015);
 		System.out.println(calendar);
 		
 		Set<GeneralNote> listGeneralNote = new NoteList().getlistOfGeneralNote();
