@@ -42,16 +42,14 @@ public class CalendarFrame extends JFrame{
 		 */
 		JPanel panelOfButton = new JPanel();
 		panelOfButton.setPreferredSize(new Dimension(1024,650));
-		panelOfButton.setBackground(Color.BLUE);
 		panelOfButton.setLayout(new GridLayout(4,3));
 		/**
 		 * Button of moth
 		 */
-		DateFormatSymbols dfsEN = new DateFormatSymbols(Locale.ENGLISH);
-		String[] theMonth = dfsEN.getMonths();
-		for(int month=0; month<11; month++){
-			
-			System.out.println(theMonth[month]);
+		DateFormatSymbols monthInYear = new DateFormatSymbols(Locale.ENGLISH);
+		String[] theMonth = monthInYear.getMonths();
+		for(int month=0; month<12; month++){
+			panelOfButton.add(new JButton(theMonth[month]));
 		}
 		
 		this.add(homePagebutton, BorderLayout.PAGE_START);

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Set;
 
 import fr.iutvalence.java.Notit.swing.CalendarFrame;
+import fr.iutvalence.java.Notit.swing.HomePageFrame;
 
 
 public class Main
