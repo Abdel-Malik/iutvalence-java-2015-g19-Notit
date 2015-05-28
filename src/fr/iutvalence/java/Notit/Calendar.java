@@ -24,7 +24,7 @@ public class Calendar
 	 * 
 	 * @param month
 	 * @param year
-	 * @throws IOException 
+	 * @throws IOException
 	 */
 	public Calendar(int month, int year) throws IOException
 	{
@@ -32,13 +32,15 @@ public class Calendar
 	}
 
 	/**
-	 * Return a list of days for a month and a year given. 
+	 * Return a list of days for a month and a year given.
+	 * 
 	 * @param month
 	 * @param year
 	 * @return listOfDays
-	 * @throws IOException 
+	 * @throws IOException
 	 */
-	public Set<Date> listOfDateForAMonth(int month, int year) throws IOException
+	public Set<Date> listOfDateForAMonth(int month, int year)
+			throws IOException
 	{
 		Date firstDayOfMonth = new Date(year, month, 1);
 		int nbDaysInMonth = 0;
@@ -61,7 +63,8 @@ public class Calendar
 	}
 
 	/**
-	 * Getter to get list of date for a month. 
+	 * Getter to get list of date for a month.
+	 * 
 	 * @return listOfDateForAMonth
 	 */
 	public Set<Date> getListOfDateForAMonth()
@@ -70,10 +73,11 @@ public class Calendar
 	}
 
 	/**
-	 * Setter to set list of date for a month. 
+	 * Setter to set list of date for a month.
+	 * 
 	 * @param month
 	 * @param year
-	 * @throws IOException 
+	 * @throws IOException
 	 */
 	public void setListOfDateForAMonth(int month, int year) throws IOException
 	{

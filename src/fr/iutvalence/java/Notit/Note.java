@@ -1,42 +1,92 @@
 package fr.iutvalence.java.Notit;
 
+import java.io.File;
+
 /**
- * A note.
+ * A Note.
+ * 
  * @author G19
  */
-
 public abstract class Note {
-	
+
+	/**
+	 * Id of note.
+	 */
 	private final int number;
+	/**
+	 * Title of note.
+	 */
 	private String title;
-	
+	/**
+	 * The content of a note.
+	 */
 	private String content;
-	
-	protected Note(int number, String title, String content){
+
+	/**
+	 * Note's constructor.
+	 * 
+	 * @param number
+	 * @param title
+	 * @param content
+	 */
+	protected Note(int number, String title, String content) {
 		this.number = number;
 		this.title = title;
 		this.content = content;
-		
+
 	}
-	
+
+	/**
+	 * Getter to get the title of the note.
+	 * 
+	 * @return title
+	 */
 	public String getTitle() {
 		return title;
 	}
 
+	/**
+	 * Setter to set the title of the note.
+	 * 
+	 * @param title
+	 */
 	public void setTitle(String title) {
 		this.title = title;
 	}
 
+	/**
+	 * Getter to get the content of the note.
+	 * 
+	 * @return content
+	 */
 	public String getContent() {
 		return content;
 	}
 
+	/**
+	 * Setter to set content of the note.
+	 * 
+	 * @param content
+	 */
 	public void setContent(String content) {
 		this.content = content;
 	}
 
-	public String toString(){
-		return this.number+this.title+this.content;
+	/**
+	 * displays the id, the title and the content of a note.
+	 */
+	public String toString() {
+		return this.number + this.title + this.content;
 	}
 
+	/**
+	 * To Edit the note.
+	 */
+	// public boolean EditNote(String path) {
+	// if (!Path.checkPath(path)){
+	// Path.createPath(path);
+	// File file = new File(path +)}
+	// File file = new File(path + (Path.maxFileInPath(path) + 1));
+	// return false;
+	// }
 }
