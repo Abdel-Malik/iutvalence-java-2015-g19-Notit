@@ -18,7 +18,7 @@ public class Main
 		// 0: January, 11:December 
 		Calendar calendar = new Calendar(5, 2015);
 		System.out.println(calendar);
-		
+			
 		Set<GeneralNote> listGeneralNote = new NoteList().getlistOfGeneralNote();
 		for(GeneralNote note : listGeneralNote){
 			System.out.println(note);

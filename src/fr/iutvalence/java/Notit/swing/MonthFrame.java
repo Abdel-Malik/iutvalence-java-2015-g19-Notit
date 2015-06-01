@@ -27,29 +27,32 @@ public class MonthFrame extends JFrame{
 		/**
 		 * the JButton
 		 */
-		JButton homePagebutton = new JButton("to HomePage");
+		JButton homePagebutton = new JButton("to Calendar");
 		homePagebutton.setPreferredSize(new Dimension(1024,68));
 		homePagebutton.setBackground(Color.RED);
 		
 		/**
 		 * the JLabel
 		 */
-		JLabel monthOfYear = new JLabel("Year "+ new Date().get(Date.YEAR), JLabel.CENTER); 
-		monthOfYear.setPreferredSize(new Dimension(1024,50));
+		DateFormatSymbols monthInYear = new DateFormatSymbols(Locale.ENGLISH);
+		String[] theMonth = monthInYear.getMonths();
+		String alphaMonth = theMonth[new Date().get(Date.MONTH)];
+		
+		JLabel monthOfYear = new JLabel(alphaMonth+" "+ new Date().get(Date.YEAR)+"\n"
+				+"", JLabel.CENTER); 
+
+		monthOfYear.setPreferredSize(new Dimension(1024,100));
 		/**
 		 * the Panel of button
 		 */
 		JPanel panelOfButton = new JPanel();
-		panelOfButton.setPreferredSize(new Dimension(1024,650));
+		panelOfButton.setPreferredSize(new Dimension(1024,600));
 		panelOfButton.setLayout(new GridLayout(4,3));
 		/**
 		 * Button of moth
 		 */
-		DateFormatSymbols monthInYear = new DateFormatSymbols(Locale.ENGLISH);
-		String[] theMonth = monthInYear.getMonths();
-		for(int month=0; month<12; month++){
-			panelOfButton.add(new JButton(theMonth[month]));
-		}
+
+
 		
 		this.add(homePagebutton, BorderLayout.PAGE_START);
 		this.add(monthOfYear, BorderLayout.CENTER);

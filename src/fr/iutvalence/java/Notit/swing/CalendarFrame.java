@@ -44,7 +44,7 @@ public class CalendarFrame extends JFrame{
 		panelOfButton.setPreferredSize(new Dimension(1024,650));
 		panelOfButton.setLayout(new GridLayout(4,3));
 		/**
-		 * Button of moth
+		 * Button of month
 		 */
 		DateFormatSymbols monthInYear = new DateFormatSymbols(Locale.ENGLISH);
 		String[] theMonth = monthInYear.getMonths();
