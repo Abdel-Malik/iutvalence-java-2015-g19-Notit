@@ -5,6 +5,7 @@ import java.util.Set;
 
 import fr.iutvalence.java.Notit.swing.CalendarFrame;
 import fr.iutvalence.java.Notit.swing.HomePageFrame;
+import fr.iutvalence.java.Notit.swing.MonthFrame;
 
 
 public class Main
@@ -13,7 +14,7 @@ public class Main
 	public static void main(String[] args) throws IOException
 	{
 		
-		CalendarFrame intermarche = new CalendarFrame();
+		MonthFrame intermarche = new MonthFrame();
 		// 0: January, 11:December 
 		Calendar calendar = new Calendar(5, 2015);
 		System.out.println(calendar);
