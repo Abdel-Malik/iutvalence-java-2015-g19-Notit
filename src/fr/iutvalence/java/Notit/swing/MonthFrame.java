@@ -7,10 +7,12 @@ import java.awt.GridLayout;
 import java.io.IOException;
 import java.text.DateFormatSymbols;
 import java.util.Locale;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JSplitPane;
 
 import fr.iutvalence.java.Notit.Date;
 
@@ -34,20 +36,47 @@ public class MonthFrame extends JFrame{
 		/**
 		 * the JLabel
 		 */
-		DateFormatSymbols monthInYear = new DateFormatSymbols(Locale.ENGLISH);
-		String[] theMonth = monthInYear.getMonths();
+		DateFormatSymbols elementInYear = new DateFormatSymbols(Locale.ENGLISH); // elementInYear = English date format
+		String[] theMonth = elementInYear.getMonths(); // theMonth = different moth in the year in English
 		String alphaMonth = theMonth[new Date().get(Date.MONTH)];
 		
-		JLabel monthOfYear = new JLabel(alphaMonth+" "+ new Date().get(Date.YEAR)+"\n"
-				+"", JLabel.CENTER); 
+		JLabel monthOfYear = new JLabel(alphaMonth+" "+ new Date().get(Date.YEAR), JLabel.CENTER);
+		JPanel daysPanel = new JPanel(new GridLayout(1,7));
+		
+		
+		monthOfYear.setMinimumSize(new Dimension(1024,50));
+		daysPanel.setPreferredSize(new Dimension(1024,50));
+		
+		daysPanel.setLayout(new GridLayout(1,7));
+		
+ 
+		String[]  alphaDay = elementInYear.getWeekdays(); // alphaDay = different day in English
+		for(int day=1; day<=7; day++){
+			JLabel theDay = new JLabel(alphaDay[day], JLabel.CENTER);
+			theDay.setPreferredSize(new Dimension(150,50));
+			daysPanel.add(theDay);
+		}
 
-		monthOfYear.setPreferredSize(new Dimension(1024,100));
+				
+		
+		/**
+		 * SplitPane for Label
+		 */
+		JSplitPane twoLabel = new JSplitPane(JSplitPane.VERTICAL_SPLIT, monthOfYear, daysPanel);
+		twoLabel.setDividerSize(0);
+		
 		/**
 		 * the Panel of button
 		 */
-		JPanel panelOfButton = new JPanel();
-		panelOfButton.setPreferredSize(new Dimension(1024,600));
-		panelOfButton.setLayout(new GridLayout(4,3));
+		JPanel panelOfDaysButton = new JPanel();
+		panelOfDaysButton.setPreferredSize(new Dimension(1024,600));
+		panelOfDaysButton.setLayout(new GridLayout(6,7));
+		
+		for(int numberDay=0; numberDay<42; numberDay++){
+			panelOfDaysButton.add(new JButton());
+		}
+		
+		
 		/**
 		 * Button of moth
 		 */
@@ -55,8 +84,8 @@ public class MonthFrame extends JFrame{
 
 		
 		this.add(homePagebutton, BorderLayout.PAGE_START);
-		this.add(monthOfYear, BorderLayout.CENTER);
-		this.add(panelOfButton, BorderLayout.PAGE_END);
+		this.add(twoLabel, BorderLayout.CENTER);
+		this.add(panelOfDaysButton, BorderLayout.PAGE_END);
 		
 		this.setVisible(true);
 	}

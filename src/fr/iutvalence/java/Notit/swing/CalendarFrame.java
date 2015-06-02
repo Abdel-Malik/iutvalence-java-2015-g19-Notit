@@ -40,21 +40,21 @@ public class CalendarFrame extends JFrame{
 		/**
 		 * the Panel of button
 		 */
-		JPanel panelOfButton = new JPanel();
-		panelOfButton.setPreferredSize(new Dimension(1024,650));
-		panelOfButton.setLayout(new GridLayout(4,3));
+		JPanel panelOfMonthButton = new JPanel();
+		panelOfMonthButton.setPreferredSize(new Dimension(1024,650));
+		panelOfMonthButton.setLayout(new GridLayout(4,3));
 		/**
 		 * Button of month
 		 */
-		DateFormatSymbols monthInYear = new DateFormatSymbols(Locale.ENGLISH);
-		String[] theMonth = monthInYear.getMonths();
+		DateFormatSymbols monthInYear = new DateFormatSymbols(Locale.ENGLISH); // monthinYear = English date format
+		String[] theMonth = monthInYear.getMonths(); // theMonth = different moth in the year in English
 		for(int month=0; month<12; month++){
-			panelOfButton.add(new JButton(theMonth[month]));
+			panelOfMonthButton.add(new JButton(theMonth[month]));
 		}
 		
 		this.add(homePagebutton, BorderLayout.PAGE_START);
 		this.add(monthOfYear, BorderLayout.CENTER);
-		this.add(panelOfButton, BorderLayout.PAGE_END);
+		this.add(panelOfMonthButton, BorderLayout.PAGE_END);
 		
 		this.setVisible(true);
 	}
