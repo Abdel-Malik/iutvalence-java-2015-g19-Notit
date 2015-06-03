@@ -18,20 +18,20 @@ import fr.iutvalence.java.Notit.Date;
 public class CalendarFrame extends JFrame{
 
 	public CalendarFrame() throws IOException{
-		
+
 		this.setTitle("NotIt");
 		this.setSize(1024, 768); 
 		this.setResizable(false); 
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
-		
+
 		/**
 		 * the JButton
 		 */
 		JButton homePagebutton = new JButton("to HomePage");
 		homePagebutton.setPreferredSize(new Dimension(1024,68));
 		homePagebutton.setBackground(Color.RED);
-		
+
 		/**
 		 * the JLabel
 		 */
@@ -51,11 +51,11 @@ public class CalendarFrame extends JFrame{
 		for(int month=0; month<12; month++){
 			panelOfMonthButton.add(new JButton(theMonth[month]));
 		}
-		
+
 		this.add(homePagebutton, BorderLayout.PAGE_START);
 		this.add(monthOfYear, BorderLayout.CENTER);
 		this.add(panelOfMonthButton, BorderLayout.PAGE_END);
-		
+
 		this.setVisible(true);
 	}
 }
