@@ -8,6 +8,7 @@ import fr.iutvalence.java.Notit.swing.DayFrame;
 import fr.iutvalence.java.Notit.swing.HomePageFrame;
 import fr.iutvalence.java.Notit.swing.MainFrame;
 import fr.iutvalence.java.Notit.swing.MonthFrame;
+import fr.iutvalence.java.Notit.swing.NewNoteFrame;
 
 
 public class Main

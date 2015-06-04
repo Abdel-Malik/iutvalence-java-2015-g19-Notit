@@ -11,7 +11,6 @@ public class MainFrame extends JFrame{
 	private HomePageFrame homePage;
 	private CalendarFrame calendarFrame;
 	
-	
 
 
 	public MainFrame() throws IOException{
