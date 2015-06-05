@@ -6,6 +6,8 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.text.DateFormatSymbols;
+import java.util.Locale;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -67,8 +69,14 @@ public class HomePageFrame extends JPanel implements ActionListener{
 		   *  the labels
 		   */
 		  this.firstLabel = new JLabel("General Note");
-		  this.secondLabel = new JLabel("Note of "+ new Date());
-		  
+
+		  DateFormatSymbols elementInYear = new DateFormatSymbols(Locale.ENGLISH); // elementInYear = English date format
+		  String[] theMonth = elementInYear.getWeekdays(); // theMonth = different moth in the year in English
+		  Date date = new Date();
+		  String currentDay = theMonth[date.get(Date.DAY_OF_MONTH)+1]+" "+ date.get(Date.DAY_OF_MONTH)+" "+ date.get(Date.YEAR);
+		 
+		  this.secondLabel = new JLabel("Note of "+ currentDay);
+
 		  this.firstLabel.setMinimumSize(labelDimension);
 		  this.firstLabel.setBackground(Color.GREEN);
 		  this.secondLabel.setMinimumSize(labelDimension);

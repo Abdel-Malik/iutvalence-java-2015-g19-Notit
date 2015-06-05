@@ -44,7 +44,7 @@ public class DayFrame extends JFrame{
 		DateFormatSymbols elementInYear = new DateFormatSymbols(Locale.ENGLISH); // elementInYear = English date format
 		String[] theMonth = elementInYear.getWeekdays(); // theMonth = different moth in the year in English
 		Date date = new Date();
-		String currentDay = theMonth[date.get(Date.DAY_OF_MONTH)+1]+" "+ date.get(Date.DAY_OF_MONTH);
+		String currentDay = theMonth[date.get(Date.DAY_OF_MONTH)+1]+" "+ date.get(Date.DAY_OF_MONTH)+" "+ date.get(Date.YEAR);
 
 		JLabel noteLabel = new JLabel("Note of "+ currentDay, JLabel.CENTER);
 
