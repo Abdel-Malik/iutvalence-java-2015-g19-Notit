@@ -17,7 +17,7 @@ public class Main
 	public static void main(String[] args) throws IOException
 	{
 		
-		MonthFrame intermarche = new MonthFrame();
+		MainFrame intermarche = new MainFrame();
 		// 0: January, 11:December 
 		Calendar calendar = new Calendar(5, 2015);
 		System.out.println(calendar);

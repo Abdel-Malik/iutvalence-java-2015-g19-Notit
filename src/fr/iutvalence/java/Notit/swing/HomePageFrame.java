@@ -36,6 +36,7 @@ public class HomePageFrame extends JPanel implements ActionListener{
 	private JSplitPane dayNoteSplit;
 	private JSplitPane allGeneral;
 	private JSplitPane allDay;
+	private NewNoteFrame note;
 	
 	public HomePageFrame(MainFrame frame) throws IOException{
 		
@@ -64,6 +65,8 @@ public class HomePageFrame extends JPanel implements ActionListener{
 		  this.addDayNoteButton.setBackground(Color.YELLOW);
 		  
 		  this.toCalendarButton.addActionListener(this);
+		  this.addGeneralNoteButton.addActionListener(this);
+		  this.addDayNoteButton.addActionListener(this);
 		  
 		  /**
 		   *  the labels
@@ -128,7 +131,14 @@ public class HomePageFrame extends JPanel implements ActionListener{
 			this.theFrame.setContentPane(this.theFrame.getCalendarFrame());
 			this.theFrame.revalidate();
 		}
-		
+		if(e.getSource()==this.addGeneralNoteButton){
+			this.note = new NewNoteFrame();
+			this.note.setVisible(true);
+		}
+		if(e.getSource()==this.addDayNoteButton){
+			this.note = new NewNoteFrame();
+			this.note.setVisible(true);
+		}
 	}
 
 

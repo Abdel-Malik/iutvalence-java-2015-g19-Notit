@@ -11,35 +11,44 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.plaf.DimensionUIResource;
 
+import fr.iutvalence.java.Notit.Date;
+
 public class NewNoteFrame extends JFrame{
 
-	private JButton addNoteLabel;
-	private JLabel title;
-	private JLabel contents;
+	private JButton addNoteButton;
+	private JLabel titleLabel;
+	private JLabel contentsLabel;
 	private JTextField titleText;
 	private JTextField contentsText;
 	private JSplitPane titleSplitPane;
 	private JSplitPane contentsSplitPane;
+	private Date date;
 	
 	public NewNoteFrame(){
-
-
+		theFrame();
+	}
+	
+	public NewNoteFrame(Date date){
+		this.date=date;
+		theFrame();
+	}
+	
+	private void theFrame(){
 		this.setTitle("NotIt");
 		this.setSize(500, 400); 
 		this.setResizable(false); 
 		this.setLocationRelativeTo(null);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);   
 		
 		/**
 		 * JLabel
 		 */
-		this.addNoteLabel = new JButton("Add new note");
-		this.title = new JLabel("Title :");
-		this.contents = new JLabel("Contents :");
+		this.addNoteButton = new JButton("Add new note");
+		this.titleLabel = new JLabel("Title :");
+		this.contentsLabel = new JLabel("Contents :");
 		
-		this.addNoteLabel.setPreferredSize(new Dimension(500, 40));
-		this.title.setPreferredSize(new DimensionUIResource(500, 20));
-		this.contents.setPreferredSize(new Dimension(500, 20));
+		this.addNoteButton.setPreferredSize(new Dimension(500, 40));
+		this.titleLabel.setPreferredSize(new DimensionUIResource(500, 20));
+		this.contentsLabel.setPreferredSize(new Dimension(500, 20));
 		
 		/**
 		 * JTextField
@@ -53,15 +62,13 @@ public class NewNoteFrame extends JFrame{
 		/**
 		 * JSplitPane
 		 */
-		this.titleSplitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, this.title, this.titleText);
-		this.contentsSplitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, this.contents, this.contentsText);
+		this.titleSplitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, this.titleLabel, this.titleText);
+		this.contentsSplitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, this.contentsLabel, this.contentsText);
 		this.titleSplitPane.setDividerSize(0);
 		this.contentsSplitPane.setDividerSize(0);
 				
 		this.add(titleSplitPane, BorderLayout.PAGE_START);
 		this.add(contentsSplitPane, BorderLayout.CENTER);
-		this.add(addNoteLabel, BorderLayout.PAGE_END);
-		
-		this.setVisible(true);
+		this.add(addNoteButton, BorderLayout.PAGE_END);
 	}
 }
