@@ -49,8 +49,7 @@ public class Calendar
 			nbDaysInMonth = firstDayOfMonth.isLeapYear(year) ? 29 : 28;
 		} else
 		{
-			nbDaysInMonth = firstDayOfMonth
-					.getActualMaximum(GregorianCalendar.DAY_OF_MONTH);
+			nbDaysInMonth = firstDayOfMonth.getActualMaximum(GregorianCalendar.DAY_OF_MONTH);
 		}
 		int nbDay = 1;
 		SortedSet<Date> listOfDays = new TreeSet<Date>();

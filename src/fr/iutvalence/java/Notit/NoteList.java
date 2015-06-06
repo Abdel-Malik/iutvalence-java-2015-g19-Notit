@@ -91,9 +91,7 @@ public class NoteList
 				contenu = "";
 				FileReader flux = new FileReader(files[index]);
 				int lettre;
-
-				while ((lettre = flux.read()) != 13)
-				{
+				while ((lettre = flux.read()) != 13){
 					numTemp += (char) (lettre);
 				}
 				numero = Integer.parseInt(numTemp);
