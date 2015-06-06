@@ -1,5 +1,9 @@
 package fr.iutvalence.java.Notit;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
 /**
  * Note of the day.
  * 
@@ -22,4 +26,24 @@ public class DayNote extends Note
 		super(number, title, content);
 		this.date = date;
 	}
+	
+
+	public void EditNote() throws IOException {
+		File file = null;
+		FileWriter write = null;
+		String path = this.date.get(date.YEAR) + "-"
+				+ this.date.get(date.MONTH) + "-" + this.date.get(date.DAY_OF_MONTH);
+		if (!Path.checkPath(path)){
+			Path.createPath(path);
+	 		file = new File(path+"/"+1);
+	 		file.createNewFile();
+	 		write = new FileWriter(file);
+		}
+		else{
+			file = new File(path+"/"+this.number);
+	 		write = new FileWriter(file);
+		}
+		write.write(this.number+"\n"+this.title+"\n"+this.content);
+		write.close();
+	 }
 }

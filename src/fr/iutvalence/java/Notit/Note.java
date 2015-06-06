@@ -1,6 +1,8 @@
 package fr.iutvalence.java.Notit;
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 /**
  * A Note.
@@ -12,15 +14,15 @@ public abstract class Note {
 	/**
 	 * Id of note.
 	 */
-	private final int number;
+	protected final int number;
 	/**
 	 * Title of note.
 	 */
-	private String title;
+	protected String title;
 	/**
 	 * The content of a note.
 	 */
-	private String content;
+	protected String content;
 
 	/**
 	 * Note's constructor.
@@ -79,14 +81,4 @@ public abstract class Note {
 		return this.number + this.title + this.content;
 	}
 
-	/**
-	 * To Edit the note.
-	 */
-	// public boolean EditNote(String path) {
-	// if (!Path.checkPath(path)){
-	// Path.createPath(path);
-	// File file = new File(path +)}
-	// File file = new File(path + (Path.maxFileInPath(path) + 1));
-	// return false;
-	// }
 }
