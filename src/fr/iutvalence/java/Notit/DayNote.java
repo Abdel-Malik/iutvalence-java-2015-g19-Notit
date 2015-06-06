@@ -34,12 +34,13 @@ public class DayNote extends Note
 		String path = "Notes/"+this.date.getDate();
 		if (!Path.checkPath(path)){
 			Path.createPath(path);
-	 		file = new File(path+"/"+1);
+	 		file = new File(path+"/"+"1");
 	 		file.createNewFile();
 	 		write = new FileWriter(file);
 		}
 		else{
 			file = new File(path+"/"+this.number);
+			file.createNewFile();
 	 		write = new FileWriter(file);
 		}
 		write.write(this.number+"\n"+this.title+"\n"+this.content);

@@ -33,6 +33,7 @@ public class GeneralNote extends Note{
 		}
 		else{
 			file = new File(path+"/"+this.number);
+			file.createNewFile();
 	 		write = new FileWriter(file);
 		}
 		write.write(this.number+"\n"+this.title+"\n"+this.content);
