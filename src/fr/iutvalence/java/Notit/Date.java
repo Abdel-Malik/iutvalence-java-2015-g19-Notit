@@ -1,7 +1,9 @@
 package fr.iutvalence.java.Notit;
 
 import java.io.IOException;
+import java.text.DateFormatSymbols;
 import java.util.GregorianCalendar;
+import java.util.Locale;
 import java.util.Set;
 
 /**
@@ -17,6 +19,10 @@ public class Date extends GregorianCalendar
 	 * A list of note.
 	 */
 	private Set<DayNote> listOfNote;
+	
+	private String dayName;
+	
+	private String monthName;
 
 	/**
 	 * The Date's constructor.
@@ -29,6 +35,11 @@ public class Date extends GregorianCalendar
 	{
 		super(year, month, day);
 		this.listOfNote = new NoteList(this).getlistOfDayNote();
+		DateFormatSymbols formatSymbol = new DateFormatSymbols(Locale.ENGLISH); // elementInYear = English date format
+		String[] daysName = formatSymbol.getWeekdays();
+		this.dayName = daysName[this.DAY_OF_MONTH];
+		String[] monthsName = formatSymbol.getMonths();
+		this.monthName = monthsName[this.MONTH];
 	}
 
 	/**
@@ -38,6 +49,10 @@ public class Date extends GregorianCalendar
 	{
 		super();
 		this.listOfNote = new NoteList(this).getlistOfDayNote();
+	}
+	
+	public Set<DayNote> getListOfNote() {
+		return listOfNote;
 	}
 
 	/**
