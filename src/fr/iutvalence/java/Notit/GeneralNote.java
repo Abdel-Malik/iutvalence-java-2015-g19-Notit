@@ -40,8 +40,8 @@ public class GeneralNote extends Note{
 	}
 	
 	public void deleteNote(){
-		String path = "GeneralesNotes"+this.number;
-		if(!Path.checkPath(path)){
+		String path = "GeneralesNotes"+"/"+this.number;
+		if(Path.checkPath(path)){
 			File file = new File(path);
 			file.delete();
 		}

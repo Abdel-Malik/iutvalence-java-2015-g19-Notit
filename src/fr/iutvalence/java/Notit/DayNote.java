@@ -47,7 +47,7 @@ public class DayNote extends Note
 	 }
 	
 	public void deleteNote(){
-		String path = "Notes/"+this.date.getDate();
+		String path = "Notes/"+this.date.getDate()+"/"+this.number;
 		if(Path.checkPath(path)){
 			File file = new File(path);
 			file.delete();
