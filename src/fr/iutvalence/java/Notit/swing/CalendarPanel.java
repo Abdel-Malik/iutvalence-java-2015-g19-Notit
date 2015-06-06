@@ -17,15 +17,14 @@ import javax.swing.JPanel;
 
 import fr.iutvalence.java.Notit.Date;
 
-public class CalendarFrame extends JPanel implements ActionListener{
+public class CalendarPanel extends JPanel implements ActionListener{
 
 	private MainFrame theFrame;
-	
 	private JButton toHomePagebutton;
 	private JLabel monthOfYear;
 	private JPanel panelOfMonthButton;
 	
-	public CalendarFrame(MainFrame frame) throws IOException{
+	public CalendarPanel(MainFrame frame) throws IOException{
 
 		this.theFrame=frame;
 
@@ -56,7 +55,9 @@ public class CalendarFrame extends JPanel implements ActionListener{
 		DateFormatSymbols monthInYear = new DateFormatSymbols(Locale.ENGLISH); // monthinYear = English date format
 		String[] theMonth = monthInYear.getMonths(); // theMonth = different moth in the year in English
 		for(int month=0; month<12; month++){
-			this.panelOfMonthButton.add(new JButton(theMonth[month]));
+			JButton actualButton = new JButton(theMonth[month]);
+			this.panelOfMonthButton.add(actualButton);
+			actualButton.addActionListener(this);
 		}
 
 		this.add(toHomePagebutton, BorderLayout.PAGE_START);
@@ -73,6 +74,8 @@ public class CalendarFrame extends JPanel implements ActionListener{
 			this.theFrame.setContentPane(this.theFrame.getHomePage());
 			this.theFrame.revalidate();
 		}
+		//if (e.getSource()== this.panelOfMonthButton)
+		
 		
 	}
 }

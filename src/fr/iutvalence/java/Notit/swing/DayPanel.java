@@ -15,9 +15,9 @@ import javax.swing.JSplitPane;
 
 import fr.iutvalence.java.Notit.Date;
 
-public class DayFrame extends JFrame{
+public class DayPanel extends JFrame{
 
-	public DayFrame() throws IOException{
+	public DayPanel() throws IOException{
 
 		this.setTitle("NotIt");
 		this.setSize(1024, 768); 
