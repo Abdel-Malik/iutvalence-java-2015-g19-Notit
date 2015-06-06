@@ -61,11 +61,11 @@ public class Date extends GregorianCalendar
 	}
 	
 	public String getEntireDate(){
-		return this.dayName + " " + this.DAY_OF_MONTH + " " + this.monthName + " " + this.YEAR;
+		return this.dayName + " " + this.get(DAY_OF_MONTH) + " " + this.monthName + " " + this.get(YEAR);
 	}
 	
 	public String getDate(){
-		return this.YEAR + "-" + this.MONTH + "-" + this.DAY_OF_MONTH;
+		return this.get(YEAR) + "-" + this.get(MONTH) + "-" + this.get(DAY_OF_MONTH);
 	}
 
 	/**

@@ -27,8 +27,9 @@ public class Main
 			System.out.println(note);
 		}*/
 		
-		DayNote maNote = new DayNote(2, "coucou", "essai modif editNote", new Date(2015, 5, 26));
-		maNote.EditNote();
+		
+		DayNote maNote = new DayNote(1, "coucou", "essai modif editNote", new Date(2015, 5, 26));
+		maNote.deleteNote();
 	}
 
 }
