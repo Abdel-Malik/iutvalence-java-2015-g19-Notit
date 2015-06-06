@@ -1,7 +1,6 @@
 package fr.iutvalence.java.Notit;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashSet;
@@ -62,6 +61,7 @@ public class NoteList
 			}
 
 			this.listOfGeneralNote.add(new GeneralNote(numero, title, contenu));
+			flux.close();
 		}
 	}
 
@@ -104,6 +104,7 @@ public class NoteList
 					contenu += (char) lettre;
 				}
 				listOfDayNote.add(new DayNote(numero, title, contenu, date));
+				flux.close();
 			}
 		}
 	}

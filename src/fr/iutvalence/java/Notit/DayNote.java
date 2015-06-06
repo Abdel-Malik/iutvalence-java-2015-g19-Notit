@@ -28,7 +28,7 @@ public class DayNote extends Note
 	}
 	
 
-	public void EditNote() throws IOException {
+	public void editNote() throws IOException {
 		File file = null;
 		FileWriter write = null;
 		String path = "Notes/"+this.date.getDate();
