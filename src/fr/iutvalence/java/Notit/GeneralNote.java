@@ -38,4 +38,12 @@ public class GeneralNote extends Note{
 		write.write(this.number+"\n"+this.title+"\n"+this.content);
 		write.close();
 	}
+	
+	public void deleteNote(){
+		String path = "GeneralesNotes"+this.number;
+		if(!Path.checkPath(path)){
+			File file = new File(path);
+			file.delete();
+		}
+	}
 }

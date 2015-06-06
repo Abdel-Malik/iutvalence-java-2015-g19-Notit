@@ -130,8 +130,7 @@ public class NoteList
 	private File[] arrayOfDayNote(Date date)
 	{
 		File[] files = null;
-		String pathName = "Notes/" + date.get(date.YEAR) + "-"
-				+ date.get(date.MONTH) + "-" + date.get(date.DAY_OF_MONTH);
+		String pathName = "Notes/"+date.getDate();
 		File repertoire = new File(pathName);
 		if (repertoire.exists())
 		{
