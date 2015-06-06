@@ -35,6 +35,7 @@ public class NoteList
 		int numero = 0;
 		String title = "";
 		String contenu = "";
+		this.listOfDayNote = new HashSet<DayNote>();
 		this.listOfGeneralNote = new HashSet<GeneralNote>();
 		File[] files = arrayOfGeneralNote();
 
@@ -78,6 +79,7 @@ public class NoteList
 		String title = "";
 		String contenu = "";
 		this.listOfDayNote = new HashSet<DayNote>();
+		this.listOfGeneralNote = new HashSet<GeneralNote>();
 		File[] files = arrayOfDayNote(date);
 		if (files != null)
 		{
