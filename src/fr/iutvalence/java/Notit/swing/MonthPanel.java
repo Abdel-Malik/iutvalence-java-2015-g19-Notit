@@ -16,9 +16,15 @@ import javax.swing.JSplitPane;
 
 import fr.iutvalence.java.Notit.Date;
 
-public class MonthFrame extends JFrame{
+public class MonthPanel extends JFrame{
 
-	public MonthFrame() throws IOException{
+	private JButton homePageButton;
+	private JLabel monthOfYear;
+	private JPanel daysPanel;
+	private JSplitPane twoLabel;
+	private JPanel panelOfDaysButton;
+	
+	public MonthPanel(int numberOfMonth) throws IOException{
 
 		this.setTitle("NotIt");
 		this.setSize(1024, 768); 
@@ -29,25 +35,25 @@ public class MonthFrame extends JFrame{
 		/**
 		 * the JButton
 		 */
-		JButton homePagebutton = new JButton("to Calendar");
-		homePagebutton.setPreferredSize(new Dimension(1024,68));
-		homePagebutton.setBackground(Color.RED);
+		this.homePageButton = new JButton("to Calendar");
+		this.homePageButton.setPreferredSize(new Dimension(1024,68));
+		this.homePageButton.setBackground(Color.RED);
 
 		/**
 		 * the JLabel
 		 */
 		DateFormatSymbols elementInYear = new DateFormatSymbols(Locale.ENGLISH); // elementInYear = English date format
 		String[] theMonth = elementInYear.getMonths(); // theMonth = different moth in the year in English
-		String alphaMonth = theMonth[new Date().get(Date.MONTH)];
+		String alphaMonth = theMonth[numberOfMonth];
 
-		JLabel monthOfYear = new JLabel(alphaMonth+" "+ new Date().get(Date.YEAR), JLabel.CENTER);
-		JPanel daysPanel = new JPanel(new GridLayout(1,7));
+		this.monthOfYear = new JLabel(alphaMonth+" "+ new Date().get(Date.YEAR), JLabel.CENTER);
+		this.daysPanel = new JPanel(new GridLayout(1,7));
 
 
-		monthOfYear.setMinimumSize(new Dimension(1024,50));
-		daysPanel.setPreferredSize(new Dimension(1024,50));
+		this.monthOfYear.setMinimumSize(new Dimension(1024,50));
+		this.daysPanel.setPreferredSize(new Dimension(1024,50));
 
-		daysPanel.setLayout(new GridLayout(1,7));
+		this.daysPanel.setLayout(new GridLayout(1,7));
 
 
 		String[]  alphaDay = elementInYear.getWeekdays(); // alphaDay = different day in English
@@ -62,25 +68,24 @@ public class MonthFrame extends JFrame{
 		/**
 		 * SplitPane for Label
 		 */
-		JSplitPane twoLabel = new JSplitPane(JSplitPane.VERTICAL_SPLIT, monthOfYear, daysPanel);
-		twoLabel.setDividerSize(0);
+		this.twoLabel = new JSplitPane(JSplitPane.VERTICAL_SPLIT, monthOfYear, daysPanel);
+		this.twoLabel.setDividerSize(0);
 
 		/**
 		 * the Panel of button
 		 */
-		JPanel panelOfDaysButton = new JPanel();
-		panelOfDaysButton.setPreferredSize(new Dimension(1024,600));
-		panelOfDaysButton.setLayout(new GridLayout(6,7));
+		this.panelOfDaysButton = new JPanel();
+		this.panelOfDaysButton.setPreferredSize(new Dimension(1024,600));
+		this.panelOfDaysButton.setLayout(new GridLayout(6,7));
 
 		for(int numberDay=0; numberDay<42; numberDay++){
-			panelOfDaysButton.add(new JButton());
+			this.panelOfDaysButton.add(new JButton());
 		}
 
 
-
-		this.add(homePagebutton, BorderLayout.PAGE_START);
-		this.add(twoLabel, BorderLayout.CENTER);
-		this.add(panelOfDaysButton, BorderLayout.PAGE_END);
+		this.add(this.homePageButton, BorderLayout.PAGE_START);
+		this.add(this.twoLabel, BorderLayout.CENTER);
+		this.add(this.panelOfDaysButton, BorderLayout.PAGE_END);
 
 		this.setVisible(true);
 	}

@@ -17,7 +17,7 @@ import javax.swing.JSplitPane;
 
 import fr.iutvalence.java.Notit.Date;
 
-public class HomePageFrame extends JPanel implements ActionListener{
+public class HomePagePanel extends JPanel implements ActionListener{
 
 	/**
 	 * Constructor of the typical frame.
@@ -38,7 +38,7 @@ public class HomePageFrame extends JPanel implements ActionListener{
 	private JSplitPane allDay;
 	private NewNoteFrame note;
 	
-	public HomePageFrame(MainFrame frame) throws IOException{
+	public HomePagePanel(MainFrame frame) throws IOException{
 		
 		  Dimension buttonDimension = new Dimension(200,50);
 		  Dimension labelDimension = new Dimension(824,50);
@@ -73,10 +73,9 @@ public class HomePageFrame extends JPanel implements ActionListener{
 		   */
 		  this.firstLabel = new JLabel("General Note");
 
-		  DateFormatSymbols elementInYear = new DateFormatSymbols(Locale.ENGLISH); // elementInYear = English date format
-		  String[] theMonth = elementInYear.getWeekdays(); // theMonth = different moth in the year in English
+		
 		  Date date = new Date();
-		  String currentDay = theMonth[date.get(Date.DAY_OF_MONTH)+1]+" "+ date.get(Date.DAY_OF_MONTH)+" "+ date.get(Date.YEAR);
+		  String currentDay = date.getEntireDate();
 		 
 		  this.secondLabel = new JLabel("Note of "+ currentDay);
 
