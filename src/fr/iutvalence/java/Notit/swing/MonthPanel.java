@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.text.DateFormatSymbols;
 import java.util.Locale;
@@ -16,26 +18,25 @@ import javax.swing.JSplitPane;
 
 import fr.iutvalence.java.Notit.Date;
 
-public class MonthPanel extends JFrame{
+public class MonthPanel extends JPanel implements ActionListener{
 
+	private MainFrame theFrame;
 	private JButton homePageButton;
 	private JLabel monthOfYear;
 	private JPanel daysPanel;
 	private JSplitPane twoLabel;
 	private JPanel panelOfDaysButton;
 	
-	public MonthPanel(int numberOfMonth) throws IOException{
+	public MonthPanel(int numberOfMonth, MainFrame frame) throws IOException{
 
-		this.setTitle("NotIt");
+		this.theFrame = frame;
 		this.setSize(1024, 768); 
-		this.setResizable(false); 
-		this.setLocationRelativeTo(null);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
 
 		/**
 		 * the JButton
 		 */
 		this.homePageButton = new JButton("to Calendar");
+		this.homePageButton.addActionListener(this);
 		this.homePageButton.setPreferredSize(new Dimension(1024,68));
 		this.homePageButton.setBackground(Color.RED);
 
@@ -88,6 +89,16 @@ public class MonthPanel extends JFrame{
 		this.add(this.panelOfDaysButton, BorderLayout.PAGE_END);
 
 		this.setVisible(true);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		
+		if (e.getSource()== this.homePageButton){
+			this.theFrame.setContentPane(this.theFrame.getCalendarPanel());
+			this.theFrame.revalidate();
+		}
+		
 	}
 
 }

@@ -8,7 +8,6 @@ public class MainFrame extends JFrame{
 
 	private HomePagePanel homePage;
 	private CalendarPanel calendarPanel;
-	private MonthPanel monthPanel;
 
 	public MainFrame() throws IOException{
 
@@ -25,18 +24,13 @@ public class MainFrame extends JFrame{
 		this.setVisible(true);
 	}
 
-	public CalendarPanel getCalendarFrame() {
+	public CalendarPanel getCalendarPanel() {
 		return calendarPanel;
 	}
 
 	public HomePagePanel getHomePage() {
 		return homePage;
 	}
-	
-	public MonthPanel getMonthPanel(){
-		return monthPanel;
-	}
-	
 	
 
 }

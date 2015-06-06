@@ -127,7 +127,7 @@ public class HomePagePanel extends JPanel implements ActionListener{
 		// TODO Auto-generated method stub
 		
 		if (e.getSource()== this.toCalendarButton){
-			this.theFrame.setContentPane(this.theFrame.getCalendarFrame());
+			this.theFrame.setContentPane(this.theFrame.getCalendarPanel());
 			this.theFrame.revalidate();
 		}
 		if(e.getSource()==this.addGeneralNoteButton){

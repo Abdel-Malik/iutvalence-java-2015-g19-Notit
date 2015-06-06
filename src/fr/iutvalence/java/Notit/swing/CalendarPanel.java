@@ -1,6 +1,7 @@
 package fr.iutvalence.java.Notit.swing;
 
 import java.awt.BorderLayout;
+import java.awt.Button;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -21,6 +22,7 @@ public class CalendarPanel extends JPanel implements ActionListener{
 
 	private MainFrame theFrame;
 	private JButton toHomePagebutton;
+	private JButton[] tableButton;
 	private JLabel monthOfYear;
 	private JPanel panelOfMonthButton;
 	
@@ -54,10 +56,11 @@ public class CalendarPanel extends JPanel implements ActionListener{
 		 */
 		DateFormatSymbols monthInYear = new DateFormatSymbols(Locale.ENGLISH); // monthinYear = English date format
 		String[] theMonth = monthInYear.getMonths(); // theMonth = different moth in the year in English
+		this.tableButton = new JButton[12];
 		for(int month=0; month<12; month++){
-			JButton actualButton = new JButton(theMonth[month]);
-			this.panelOfMonthButton.add(actualButton);
-			actualButton.addActionListener(this);
+			this.tableButton[month] = new JButton(theMonth[month]);
+			this.tableButton[month].addActionListener(this);
+			this.panelOfMonthButton.add(tableButton[month]);
 		}
 
 		this.add(toHomePagebutton, BorderLayout.PAGE_START);
@@ -74,7 +77,18 @@ public class CalendarPanel extends JPanel implements ActionListener{
 			this.theFrame.setContentPane(this.theFrame.getHomePage());
 			this.theFrame.revalidate();
 		}
-		//if (e.getSource()== this.panelOfMonthButton)
+		for (int x=0; x<12; x++)
+			if (e.getSource() == this.tableButton[x])
+			{
+				try {
+					this.theFrame.setContentPane(new MonthPanel(x, this.theFrame));
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				this.theFrame.revalidate();
+			}
+		
 		
 		
 	}
