@@ -22,6 +22,7 @@ public class MonthPanel extends JPanel implements ActionListener{
 
 	private MainFrame theFrame;
 	private JButton homePageButton;
+	private JButton[] tableButton;
 	private JLabel monthOfYear;
 	private JPanel daysPanel;
 	private JSplitPane twoLabel;
@@ -78,11 +79,12 @@ public class MonthPanel extends JPanel implements ActionListener{
 		this.panelOfDaysButton = new JPanel();
 		this.panelOfDaysButton.setPreferredSize(new Dimension(1024,600));
 		this.panelOfDaysButton.setLayout(new GridLayout(6,7));
-
+		this.tableButton = new JButton[42];
+		
 		for(int numberDay=0; numberDay<42; numberDay++){
-			this.panelOfDaysButton.add(new JButton());
+			this.tableButton[numberDay]=new JButton();
+			this.panelOfDaysButton.add(tableButton[numberDay]);
 		}
-
 
 		this.add(this.homePageButton, BorderLayout.PAGE_START);
 		this.add(this.twoLabel, BorderLayout.CENTER);

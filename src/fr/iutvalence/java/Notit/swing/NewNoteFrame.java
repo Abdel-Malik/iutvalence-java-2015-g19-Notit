@@ -2,6 +2,8 @@ package fr.iutvalence.java.Notit.swing;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -13,7 +15,7 @@ import javax.swing.plaf.DimensionUIResource;
 
 import fr.iutvalence.java.Notit.Date;
 
-public class NewNoteFrame extends JFrame{
+public class NewNoteFrame extends JFrame implements ActionListener{
 
 	private JButton addNoteButton;
 	private JLabel titleLabel;
@@ -70,5 +72,11 @@ public class NewNoteFrame extends JFrame{
 		this.add(titleSplitPane, BorderLayout.PAGE_START);
 		this.add(contentsSplitPane, BorderLayout.CENTER);
 		this.add(addNoteButton, BorderLayout.PAGE_END);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
+		
 	}
 }
