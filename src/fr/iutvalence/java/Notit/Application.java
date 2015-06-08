@@ -9,6 +9,11 @@ import java.util.Set;
  */
 public class Application {
 	
+	private int currentYear;
+	
+	public Application() throws IOException{
+		this.currentYear = new Date().get(Date.YEAR);
+	}
 	
 	public void editDayNotes(int number, String title, String content, Date date) throws IOException{
 		DayNote theNote = new DayNote(number, title, content, date);
@@ -17,7 +22,7 @@ public class Application {
 		theNote.editNote();
 	}
 	
-	public void editDayNotes(String title, String content, Date date) throws IOException{
+	public void createDayNotes(String title, String content, Date date) throws IOException{
 		String path = "Notes/"+date.getDate();
 		editDayNotes(Path.maxFileInPath(path), title, content, date);
 	}
@@ -30,9 +35,19 @@ public class Application {
 		theNote.editNote();
 	}
 	
-	public void editGNotes(String title, String content) throws IOException{
+	public void createGNotes(String title, String content) throws IOException{
 		String path = "GeneralNotes";
 		editGNotes(Path.maxFileInPath(path), title, content);
+	}
+	
+	public void deleteDayNotes(int number, String title, String content, Date date) throws IOException{
+		DayNote myNote = new DayNote(number, title, content, date);
+		myNote.deleteNote();
+	}
+	
+	public void deleteGNotes(int number, String title, String content) throws IOException{
+		GeneralNote myNote = new GeneralNote(number, title, content);
+		myNote.deleteNote();
 	}
 	
 	public Set<GeneralNote> getGeneralNote() throws IOException{
@@ -42,5 +57,8 @@ public class Application {
 	public Set<DayNote> getDayNote() throws IOException{
 		return new NoteList(new Date()).getlistOfDayNote();
 	}
-
+	
+	public Calendar getCalendar(int monthNumber) throws IOException{
+		return new Calendar(monthNumber, this.currentYear);
+	}
 }
