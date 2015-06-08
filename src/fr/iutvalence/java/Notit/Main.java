@@ -27,8 +27,10 @@ public class Main
 			System.out.println(note);
 		}*/
 		
+		Date date = new Date(2015, 5, 26);
+		DayNote maNote = new DayNote(1, "coucou", "essai modif editNote", date);
 		
-		DayNote maNote = new DayNote(1, "coucou", "essai modif editNote", new Date(2015, 5, 26));
+		System.out.println(date.get(Date.DAY_OF_WEEK));
 		maNote.deleteNote();
 	}
 
