@@ -82,6 +82,16 @@ public class Calendar
 	{
 		this.listOfDateForAMonth = listOfDateForAMonth(month, year);
 	}
+	
+	public int getFirstDay(){
+		for (Date date : listOfDateForAMonth)
+		{
+			if (date.get(Date.DAY_OF_MONTH) == 1){
+				return date.get(Date.DAY_OF_WEEK);
+			}
+		}
+		return 0;
+	}
 
 	/**
 	 * Displays the list of date for a month.

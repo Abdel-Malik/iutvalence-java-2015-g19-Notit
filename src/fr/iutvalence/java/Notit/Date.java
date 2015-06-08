@@ -35,11 +35,7 @@ public class Date extends GregorianCalendar
 	{
 		super(year, month, day);
 		this.listOfNote = new NoteList(this).getlistOfDayNote();
-		DateFormatSymbols formatSymbol = new DateFormatSymbols(Locale.ENGLISH); // elementInYear = English date format
-		String[] daysName = formatSymbol.getWeekdays();
-		this.dayName = daysName[this.DAY_OF_WEEK];
-		String[] monthsName = formatSymbol.getMonths();
-		this.monthName = monthsName[this.MONTH];
+		this.searchName();
 	}
 
 	/**
@@ -49,11 +45,16 @@ public class Date extends GregorianCalendar
 	{
 		super();
 		this.listOfNote = new NoteList(this).getlistOfDayNote();
+		this.searchName();
+	}
+	
+	private void searchName()
+	{
 		DateFormatSymbols formatSymbol = new DateFormatSymbols(Locale.ENGLISH); // elementInYear = English date format
 		String[] daysName = formatSymbol.getWeekdays();
-		this.dayName = daysName[this.DAY_OF_WEEK];
+		this.dayName = daysName[this.get(DAY_OF_WEEK)];
 		String[] monthsName = formatSymbol.getMonths();
-		this.monthName = monthsName[this.MONTH];
+		this.monthName = monthsName[this.get(MONTH)];
 	}
 	
 	public Set<DayNote> getListOfNote() {
