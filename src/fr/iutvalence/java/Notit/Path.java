@@ -31,19 +31,19 @@ public class Path {
 	}
 
 	public static int maxFileInPath(String path) {
-		int max;
-		File repository = new File(path);
-		File[] files = repository.listFiles();
-		if(files == null){
-			max = 0;
-		}
-		else{
-			max = (int) files[0].getName().charAt(0);
-			for (int index = 0; index < files.length; index++) {
-				if (max >= (int) files[index].getName().charAt(0))
-					max = (int) files[index].getName().charAt(0);
+		int max = 0;
+		if(checkPath(path)){
+			File repository = new File(path);
+			File[] files = repository.listFiles();
+			if(files.length > 0){
+				max = (int) (files[0].getName().charAt(0) - 48);
+				for (int index = 0; index < files.length; index++) {
+					if (max < (int) (files[index].getName().charAt(0)-48))
+						max = (int) (files[index].getName().charAt(0)-48);
+				}
 			}
 		}
+		max++;
 		return max;
 	}
 }

@@ -32,17 +32,11 @@ public class DayNote extends Note
 		File file = null;
 		FileWriter write = null;
 		String path = "Notes/"+this.date.get(date.YEAR) + "-" + this.date.get(date.MONTH) + "-" + this.date.get(date.DAY_OF_MONTH);
-		if (!Path.checkPath(path)){
+		if (!Path.checkPath(path))
 			Path.createPath(path);
-	 		file = new File(path+"/"+"1");
-	 		file.createNewFile();
-	 		write = new FileWriter(file);
-		}
-		else{
-			file = new File(path+"/"+this.number);
-			file.createNewFile();
-	 		write = new FileWriter(file);
-		}
+		file = new File(path+"/"+this.number);
+		file.createNewFile();
+	 	write = new FileWriter(file);
 		write.write(this.number+"\r"+this.title+"\r"+this.content+"\r");
 		write.close();
 	 }
@@ -54,4 +48,11 @@ public class DayNote extends Note
 			file.delete();
 		}
 	}
+
+
+	public Date getDate() {
+		return date;
+	}
+	
+	
 }

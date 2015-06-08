@@ -6,11 +6,17 @@ package fr.iutvalence.java.Notit;
  */
 public class Application {
 	
-	public void afficherAccueil(){
-		//envoie Notes générales
-		//envoie notes jours
-		
-		
+	
+	public void editDayNotes(int number, String title, String content, Date date){
+		DayNote theNote = new DayNote(number, title, content, date);
+		theNote.editNote();
+			theNote.setTitle(title);
+			theNote.setContent(content);
+		}
+	
+	public void editDayNotes(String title, String content, Date date){
+		String path = "Notes/"+theNote.getDate().getDate();
+		editNotes(Path.maxFileInPath(path), title, content, date);
 	}
 
 }

@@ -72,6 +72,10 @@ public abstract class Note {
 	 */
 	public void setContent(String content) {
 		this.content = content;
+	}	
+	
+	public int getNumber() {
+		return number;
 	}
 
 	/**
