@@ -1,6 +1,7 @@
 package fr.iutvalence.java.Notit;
 
 import java.io.IOException;
+import java.util.Set;
 
 /**
  * The application.
@@ -32,6 +33,14 @@ public class Application {
 	public void editGNotes(String title, String content) throws IOException{
 		String path = "GeneralNotes";
 		editGNotes(Path.maxFileInPath(path), title, content);
+	}
+	
+	public Set<GeneralNote> getGeneralNote() throws IOException{
+		return new NoteList().getlistOfGeneralNote();
+	}
+	
+	public Set<DayNote> getDayNote() throws IOException{
+		return new NoteList(new Date()).getlistOfDayNote();
 	}
 
 }
