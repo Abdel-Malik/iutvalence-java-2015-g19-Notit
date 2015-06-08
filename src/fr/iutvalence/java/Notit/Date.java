@@ -34,9 +34,7 @@ public class Date extends GregorianCalendar
 	public Date(int year, int month, int day) throws IOException
 	{
 		super(year, month, day);
-		System.out.println("AFTER SUPER");
 		this.listOfNote = new NoteList(this).getlistOfDayNote();
-		System.out.println("après_listeDenote");
 		DateFormatSymbols formatSymbol = new DateFormatSymbols(Locale.ENGLISH); // elementInYear = English date format
 		String[] daysName = formatSymbol.getWeekdays();
 		this.dayName = daysName[this.DAY_OF_WEEK];
