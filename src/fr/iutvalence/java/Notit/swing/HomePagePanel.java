@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.text.DateFormatSymbols;
 import java.util.Locale;
+import java.util.Set;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -16,6 +17,8 @@ import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 
 import fr.iutvalence.java.Notit.Date;
+import fr.iutvalence.java.Notit.DayNote;
+import fr.iutvalence.java.Notit.GeneralNote;
 
 public class HomePagePanel extends JPanel implements ActionListener{
 
@@ -37,13 +40,17 @@ public class HomePagePanel extends JPanel implements ActionListener{
 	private JSplitPane allGeneral;
 	private JSplitPane allDay;
 	private NewNoteFrame note;
+	private Set<GeneralNote> generalNotes;
+	private Set<DayNote> dayNotes;
 	
-	public HomePagePanel(MainFrame frame) throws IOException{
+	public HomePagePanel(MainFrame frame, Set<GeneralNote> generalNote, Set<DayNote> dayNote) throws IOException{
 		
 		  Dimension buttonDimension = new Dimension(200,50);
 		  Dimension labelDimension = new Dimension(824,50);
 		  Dimension panelDimension = new Dimension(1024,300);
 		  
+		  this.generalNotes = generalNote;
+		  this.dayNotes = dayNote;
 		  this.theFrame = frame;
 		
 		  this.setSize(1024, 768); 
@@ -76,7 +83,6 @@ public class HomePagePanel extends JPanel implements ActionListener{
 		
 		  Date date = new Date();
 		  String currentDay = date.getEntireDate();
-		 
 		  this.secondLabel = new JLabel("Note of "+ currentDay);
 
 		  this.firstLabel.setMinimumSize(labelDimension);
@@ -115,12 +121,11 @@ public class HomePagePanel extends JPanel implements ActionListener{
 		  this.add(allGeneral, BorderLayout.CENTER);
 		  this.add(allDay, BorderLayout.PAGE_END);
 		  
+		  this.displayDayNote();
+		  this.displayGeneralNote();
 		  this.setVisible(true);
 	}
-	
-	public JButton getToCalendarButton() {
-		return toCalendarButton;
-	}
+
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -140,6 +145,16 @@ public class HomePagePanel extends JPanel implements ActionListener{
 		}
 	}
 
+	private void displayGeneralNote(){
+		for(GeneralNote generalNote : this.generalNotes){
+			this.generalNotePanel.add(new NewNotePanel(generalNote.getNumber(), generalNote.getTitle(), generalNote.getContent()));
+		}
+	}
+	private void displayDayNote(){
+		for(DayNote dayNote : this.dayNotes){
+			this.dayNotePanel.add(new NewNotePanel(dayNote.getNumber(), dayNote.getTitle(), dayNote.getContent()));
+		}
+	}
 
 
 
