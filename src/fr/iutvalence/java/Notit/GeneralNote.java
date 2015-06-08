@@ -30,7 +30,7 @@ public class GeneralNote extends Note{
 		file = new File(path+"/"+this.number);
 		file.createNewFile();
  		write = new FileWriter(file);
-		write.write(this.number+"\n"+this.title+"\n"+this.content);
+		write.write(this.number+"\r"+this.title+"\r"+this.content);
 		write.close();
 	}
 	

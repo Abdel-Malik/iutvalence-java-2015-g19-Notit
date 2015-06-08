@@ -115,15 +115,14 @@ public class HomePagePanel extends JPanel implements ActionListener{
 		  this.allGeneral.setDividerSize(0);
 		  this.allDay.setDividerSize(0); 
 		  
-		  
-		  
 		  this.add(toCalendarButton, BorderLayout.PAGE_START);
 		  this.add(allGeneral, BorderLayout.CENTER);
 		  this.add(allDay, BorderLayout.PAGE_END);
-		  
-		  this.displayDayNote();
+
 		  this.displayGeneralNote();
+		  this.displayDayNote();
 		  this.setVisible(true);
+		  
 	}
 
 
@@ -136,20 +135,25 @@ public class HomePagePanel extends JPanel implements ActionListener{
 			this.theFrame.revalidate();
 		}
 		if(e.getSource()==this.addGeneralNoteButton){
-			this.note = new NewNoteFrame();
+			this.note = new NewNoteFrame(this.theFrame);
 			this.note.setVisible(true);
 		}
 		if(e.getSource()==this.addDayNoteButton){
-			this.note = new NewNoteFrame();
+			this.note = new NewNoteFrame(this.theFrame);
 			this.note.setVisible(true);
 		}
 	}
 
-	private void displayGeneralNote(){
+	
+	public void displayGeneralNote(){
+		this.generalNotePanel.removeAll();
 		for(GeneralNote generalNote : this.generalNotes){
 			this.generalNotePanel.add(new NewNotePanel(generalNote.getNumber(), generalNote.getTitle(), generalNote.getContent()));
 		}
+		this.generalNotePanel.revalidate();
 	}
+
+	
 	private void displayDayNote(){
 		for(DayNote dayNote : this.dayNotes){
 			this.dayNotePanel.add(new NewNotePanel(dayNote.getNumber(), dayNote.getTitle(), dayNote.getContent()));

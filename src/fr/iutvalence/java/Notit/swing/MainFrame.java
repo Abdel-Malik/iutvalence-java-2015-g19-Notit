@@ -13,6 +13,10 @@ public class MainFrame extends JFrame{
 	private CalendarPanel calendarPanel;
 	private Application application;
 
+	public Application getApplication() {
+		return application;
+	}
+
 	public MainFrame() throws IOException{
 
 		this.application = new Application();
