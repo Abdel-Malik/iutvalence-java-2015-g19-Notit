@@ -3,13 +3,17 @@ package fr.iutvalence.java.Notit.swing;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
+
 import fr.iutvalence.java.Notit.Application;
 import fr.iutvalence.java.Notit.Date;
 import fr.iutvalence.java.Notit.DayNote;
@@ -23,7 +27,7 @@ public class HomePagePanel extends JPanel implements ActionListener{
 	 */
 	private MainFrame theFrame;
 	
-	private JButton toCalendarButton;
+	private Button toCalendarButton;
 	private JButton addGeneralNoteButton;
 	private JButton addDayNoteButton;
 	private JLabel firstLabel;
@@ -51,12 +55,12 @@ public class HomePagePanel extends JPanel implements ActionListener{
 		  /**
 		   * the Buttons.
 		   */
-		  this.toCalendarButton = new JButton("Calendar");
+		  this.toCalendarButton = new Button(new ImageIcon("img/calendar_white.png"),new Dimension(1024,68),"CALENDAR");
 		  this.addGeneralNoteButton = new JButton("addGeneralNote");
 		  this.addDayNoteButton = new JButton("addDayNote");
 		  
-		  this.toCalendarButton.setPreferredSize(new Dimension(1024,68));
-		  this.toCalendarButton.setBackground(Color.RED);
+		  this.toCalendarButton.setFont(new Font("Clarendon blk BT", 1, 25));
+		  this.toCalendarButton.setBackground(new Color(231, 76, 60));
 
 		  this.addGeneralNoteButton.setPreferredSize(buttonDimension);
 		  this.addGeneralNoteButton.setBackground(Color.YELLOW);

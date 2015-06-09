@@ -3,6 +3,7 @@ package fr.iutvalence.java.Notit.swing;
 
 import java.io.IOException;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 import fr.iutvalence.java.Notit.Application;
@@ -16,9 +17,11 @@ public class MainFrame extends JFrame{
 	public MainFrame() throws IOException{
 
 		this.application = new Application();
-		this.setTitle("NotIt");
+		ImageIcon img = new ImageIcon("img/calendar_icon.png");
+		this.setIconImage(img.getImage());
+		this.setTitle("Not'It");
 		this.setSize(1037, 820);
-		this.setResizable(false); 
+		this.setResizable(false);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.calendarPanel = new CalendarPanel(this);
