@@ -58,12 +58,12 @@ public class HomePagePanel extends JPanel implements ActionListener{
 		   * the Buttons.
 		   */
 		  this.toCalendarButton = new Button(new ImageIcon("img/calendar_white.png"),new Dimension(1024,68),"GO TO CALENDAR");
+		  this.toCalendarButton.setFont(new Font("LAO UI", 1, 32));
+		  this.toCalendarButton.setBackground(new Color(231, 76, 60));
+		  
 		  ImageIcon imgPlus = new ImageIcon(new ImageIcon("img/plus.png").getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
 		  this.addGeneralNoteButton = new Button(imgPlus, new Dimension(buttonDimension));
 		  this.addDayNoteButton = new Button(imgPlus, new Dimension(buttonDimension));
-		  
-		  this.toCalendarButton.setFont(new Font("LAO UI", 1, 32));
-		  this.toCalendarButton.setBackground(new Color(231, 76, 60));
 		  
 		  this.addGeneralNoteButton.setBackground(Color.WHITE);
 		  this.addDayNoteButton.setBackground(Color.WHITE);

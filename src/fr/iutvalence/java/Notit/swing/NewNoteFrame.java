@@ -1,13 +1,16 @@
 package fr.iutvalence.java.Notit.swing;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.TileObserver;
 import java.io.IOException;
 
-import javax.swing.JButton;
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JSplitPane;
@@ -23,7 +26,7 @@ import fr.iutvalence.java.Notit.Path;
 public class NewNoteFrame extends JFrame implements ActionListener{
 
 	private MainFrame theFrame;
-	private JButton addNoteButton;
+	private Button addNoteButton;
 	private JLabel titleLabel;
 	private JLabel contentsLabel;
 	private JTextField titleText;
@@ -49,8 +52,10 @@ public class NewNoteFrame extends JFrame implements ActionListener{
 	}
 	
 	private void displayOfFrame(MainFrame frame){
-		this.setTitle("NotIt");
-		this.setSize(500, 400); 
+		this.setTitle("Not'It : Nouvelle note");
+		ImageIcon img = new ImageIcon("img/calendar_icon.png");
+		this.setIconImage(img.getImage());
+		this.setSize(500, 380); 
 		this.setResizable(false); 
 		this.setLocationRelativeTo(null);
 		this.theFrame = frame;
@@ -58,33 +63,42 @@ public class NewNoteFrame extends JFrame implements ActionListener{
 		/**
 		 * JButton
 		 */
-		this.addNoteButton = new JButton("Add new note");
+		this.addNoteButton = new Button(null, new Dimension(500, 40), "Add");
+		this.addNoteButton.setBackground(new Color(231, 76, 60));
+		this.addNoteButton.setFont(new Font("Lao UI", 1, 20));
 		this.addNoteButton.addActionListener(this);
-		this.addNoteButton.setPreferredSize(new Dimension(500, 40));
+		
 		/**
 		 * JLabel
 		 */
-		
 		this.titleLabel = new JLabel("Title :");
+		this.titleLabel.setFont(new Font("Lao UI", 1, 18));
 		this.contentsLabel = new JLabel("Contents :");
+		this.contentsLabel.setFont(new Font("Lao UI", 1, 18));
 		
-		this.titleLabel.setPreferredSize(new DimensionUIResource(500, 20));
-		this.contentsLabel.setPreferredSize(new Dimension(500, 20));
+		this.titleLabel.setPreferredSize(new Dimension(500, 40));
+		this.contentsLabel.setPreferredSize(new Dimension(500, 40));
 		
 		/**
 		 * JTextField
 		 */
 		this.titleText = new JTextField("The title of your 'Not'it'", 30);
+		this.titleText.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, new Color(231, 76, 60)));
 		this.contentsText = new JTextArea("Write here ...");
+		this.contentsText.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, new Color(231, 76, 60)));
 		
-		this.titleText.setPreferredSize(new DimensionUIResource(500, 20));
-		this.contentsText.setPreferredSize(new Dimension(500, 270));
+		this.titleText.setPreferredSize(new Dimension(500, 20));
+		this.contentsText.setPreferredSize(new Dimension(500, 240));
 
 		/**
 		 * JSplitPane
 		 */
 		this.titleSplitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, this.titleLabel, this.titleText);
 		this.contentsSplitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, this.contentsLabel, this.contentsText);
+		this.titleSplitPane.setBackground(Color.WHITE);
+		this.contentsSplitPane.setBackground(Color.WHITE);
+		this.titleSplitPane.setBorder(null);
+		this.contentsSplitPane.setBorder(null);
 		this.titleSplitPane.setDividerSize(0);
 		this.contentsSplitPane.setDividerSize(0);
 				
@@ -105,7 +119,6 @@ public class NewNoteFrame extends JFrame implements ActionListener{
 					this.theFrame.getHomePage().displayGeneralNote();
 					
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
@@ -117,7 +130,6 @@ public class NewNoteFrame extends JFrame implements ActionListener{
 						this.dispose();
 						this.theFrame.getHomePage().displayDayNote();
 					} catch (IOException e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
 				}
@@ -127,7 +139,6 @@ public class NewNoteFrame extends JFrame implements ActionListener{
 						this.dispose();
 						this.panel.displayDayNotePanel();
 					} catch (IOException e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
 				}

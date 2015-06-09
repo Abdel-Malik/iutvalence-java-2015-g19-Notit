@@ -3,16 +3,21 @@ package fr.iutvalence.java.Notit.swing;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.text.DateFormatSymbols;
 import java.util.Locale;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
+
 import fr.iutvalence.java.Notit.Calendar;
 import fr.iutvalence.java.Notit.Date;
 
@@ -36,16 +41,17 @@ public class MonthPanel extends JPanel implements ActionListener{
 		this.thisPanel = this;
 		this.theMonth = theCalendar.getMonthNumber();
 		this.theFrame = frame;
-		this.setSize(1024, 768); 
-		
+		this.setSize(1024, 768);
+		this.setBackground(Color.WHITE);
 
 		/**
 		 * the JButton
 		 */
-		this.homePageButton = new JButton("to Calendar");
+		ImageIcon imgHome = new ImageIcon(new ImageIcon("img/calendar_white.png").getImage().getScaledInstance(55, 55, Image.SCALE_DEFAULT));
+		this.homePageButton = new Button(imgHome, new Dimension(1024,68), "GO TO CALENDAR");
+		this.homePageButton.setFont(new Font("Lao UI", 1, 32));
+		this.homePageButton.setBackground(new Color(231, 76, 60));
 		this.homePageButton.addActionListener(this);
-		this.homePageButton.setPreferredSize(new Dimension(1024,68));
-		this.homePageButton.setBackground(Color.RED);
 
 		/**
 		 * the JLabel
@@ -55,6 +61,8 @@ public class MonthPanel extends JPanel implements ActionListener{
 		String alphaMonth = theMonth[this.theMonth];
 		this.currentYear =  new Date().get(Date.YEAR);
 		this.monthOfYear = new JLabel(alphaMonth+" "+ this.currentYear, JLabel.CENTER);
+		this.monthOfYear.setFont(new Font("Lao UI", 1, 28));
+		this.monthOfYear.setForeground(new Color(192, 57, 43));
 		this.daysPanel = new JPanel(new GridLayout(1,7));
 
 
@@ -62,12 +70,14 @@ public class MonthPanel extends JPanel implements ActionListener{
 		this.daysPanel.setPreferredSize(new Dimension(1024,50));
 
 		this.daysPanel.setLayout(new GridLayout(1,7));
+		this.daysPanel.setBackground(Color.WHITE);
 
 
 		String[]  alphaDay = elementInYear.getWeekdays(); // alphaDay = different day in English
 		for(int day=1; day<=7; day++){
 			JLabel theDay = new JLabel(alphaDay[day], JLabel.CENTER);
 			theDay.setPreferredSize(new Dimension(150,50));
+			theDay.setFont(new Font("Lao UI", 1, 15));
 			daysPanel.add(theDay);
 		}
 
@@ -78,6 +88,8 @@ public class MonthPanel extends JPanel implements ActionListener{
 		 */
 		this.twoLabel = new JSplitPane(JSplitPane.VERTICAL_SPLIT, this.monthOfYear, this.daysPanel);
 		this.twoLabel.setDividerSize(0);
+		this.twoLabel.setBorder(null);
+		this.twoLabel.setBackground(Color.WHITE);
 
 		/**
 		 * the Panel of button
@@ -91,7 +103,7 @@ public class MonthPanel extends JPanel implements ActionListener{
 		for(int numberCase=0; numberCase<42; numberCase++){
 			if (numberCase == theCalendar.getFirstDay()-1)
 			{
-				this.tableButton[numberCase]=new MyButton("J"+numberDay, numberDay);
+				this.tableButton[numberCase]=new MyButton(Integer.toString(numberDay), numberDay);
 				this.tableButton[numberCase].addActionListener(this);
 				this.panelOfDaysButton.add(tableButton[numberCase]);
 				numberDay++;
@@ -109,7 +121,7 @@ public class MonthPanel extends JPanel implements ActionListener{
 				this.panelOfDaysButton.add(tableButton[numberCase]);
 			}
 			else {
-				this.tableButton[numberCase]=new MyButton("J"+numberDay, numberDay);
+				this.tableButton[numberCase]=new MyButton(Integer.toString(numberDay), numberDay);
 				this.tableButton[numberCase].addActionListener(this);
 				this.panelOfDaysButton.add(tableButton[numberCase]);
 				numberDay++;
@@ -138,7 +150,6 @@ public class MonthPanel extends JPanel implements ActionListener{
 					Date theDate = new Date(this.currentYear, this.theMonth, this.tableButton[x].getID());
 					this.theFrame.setContentPane(new DayPanel(theDate, thisPanel, this.theFrame));
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				this.theFrame.revalidate();

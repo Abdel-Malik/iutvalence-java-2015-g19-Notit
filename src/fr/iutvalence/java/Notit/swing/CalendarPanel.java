@@ -1,16 +1,18 @@
 package fr.iutvalence.java.Notit.swing;
 
 import java.awt.BorderLayout;
-import java.awt.Button;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.text.DateFormatSymbols;
 import java.util.Locale;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -21,7 +23,7 @@ import fr.iutvalence.java.Notit.Date;
 public class CalendarPanel extends JPanel implements ActionListener{
 
 	private MainFrame theFrame;
-	private JButton toHomePagebutton;
+	private Button toHomePagebutton;
 	private JButton[] tableButton;
 	private JLabel monthOfYear;
 	private JPanel panelOfMonthButton;
@@ -29,22 +31,26 @@ public class CalendarPanel extends JPanel implements ActionListener{
 	public CalendarPanel(MainFrame frame) throws IOException{
 
 		this.theFrame=frame;
+		this.setBackground(Color.WHITE);
 
 		this.setSize(1024, 768); 
 
 		/**
 		 * the JButton
 		 */
-		this.toHomePagebutton = new JButton("to HomePage");
-		this.toHomePagebutton.addActionListener(this);
-		this.toHomePagebutton.setPreferredSize(new Dimension(1024,68));
-		this.toHomePagebutton.setBackground(Color.RED);
-
+		ImageIcon imgHome = new ImageIcon(new ImageIcon("img/home_white.png").getImage().getScaledInstance(55, 55, Image.SCALE_DEFAULT));
+		this.toHomePagebutton = new Button(imgHome, new Dimension(1024,68), "GO TO HOMEPAGE");
+		this.toHomePagebutton.setFont(new Font("LAO UI", 1, 32));
+		this.toHomePagebutton.setBackground(new Color(231, 76, 60));
+	  	this.toHomePagebutton.addActionListener(this);
 		/**
 		 * the JLabel
 		 */
 		this.monthOfYear = new JLabel("Year "+ new Date().get(Date.YEAR), JLabel.CENTER); 
 		this.monthOfYear.setPreferredSize(new Dimension(1024,50));
+		this.monthOfYear.setFont(new Font("Lao UI", 1, 28));
+		this.monthOfYear.setForeground(new Color(192, 57, 43));
+		
 		/**
 		 * the Panel of button
 		 */
@@ -59,6 +65,10 @@ public class CalendarPanel extends JPanel implements ActionListener{
 		this.tableButton = new JButton[12];
 		for(int month=0; month<12; month++){
 			this.tableButton[month] = new JButton(theMonth[month]);
+			this.tableButton[month].setBackground(Color.WHITE);
+			this.tableButton[month].setForeground(new Color(231, 76, 60));
+			this.tableButton[month].setFont(new Font("Lao UI", 1, 24));
+			this.tableButton[month].setBorder(null);
 			this.tableButton[month].addActionListener(this);
 			this.panelOfMonthButton.add(tableButton[month]);
 		}

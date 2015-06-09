@@ -1,11 +1,15 @@
 package fr.iutvalence.java.Notit.swing;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -76,38 +80,49 @@ public class EditNoteFrame extends JFrame implements ActionListener{
 	
 	
 	private void displayOfFrame(MainFrame frame){
-		this.setTitle("NotIt");
-		this.setSize(500, 400); 
+		this.setTitle("Not'It : Edition de note");
+		ImageIcon img = new ImageIcon("img/calendar_icon.png");
+		this.setIconImage(img.getImage());
+		this.setSize(500, 380); 
 		this.setResizable(false); 
 		this.setLocationRelativeTo(null);
 		this.theFrame = frame;
 		/**
 		 * JButton
 		 */
-		this.editNoteButton = new JButton("Edit");
+		this.editNoteButton = new Button(null, new Dimension(500, 40), "Edit");
+		this.editNoteButton.setBackground(new Color(231, 76, 60));
+		this.editNoteButton.setFont(new Font("Lao UI", 1, 20));
 		this.editNoteButton.addActionListener(this);
-		this.editNoteButton.setPreferredSize(new Dimension(500, 40));
 		/**
 		 * JLabel
 		 */
 		
 		this.titleLabel = new JLabel("Title :");
+		this.titleLabel.setFont(new Font("Lao UI", 1, 18));
 		this.contentsLabel = new JLabel("Contents :");
+		this.contentsLabel.setFont(new Font("Lao UI", 1, 18));
 		
-		this.titleLabel.setPreferredSize(new Dimension(500, 20));
-		this.contentsLabel.setPreferredSize(new Dimension(500, 20));
+		this.titleLabel.setPreferredSize(new Dimension(500, 40));
+		this.contentsLabel.setPreferredSize(new Dimension(500, 40));
 
 		/**
 		 * JTextField
 		 */
 		this.titleText.setPreferredSize(new Dimension(500, 20));
+		this.titleText.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, new Color(231, 76, 60)));
 		this.contentsText.setPreferredSize(new Dimension(500, 270));
+		this.contentsText.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, new Color(231, 76, 60)));
 		
 		/**
 		 * JSplitPane
 		 */
 		this.titleSplitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, this.titleLabel, this.titleText);
 		this.contentsSplitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, this.contentsLabel, this.contentsText);
+		this.titleSplitPane.setBackground(Color.WHITE);
+		this.contentsSplitPane.setBackground(Color.WHITE);
+		this.titleSplitPane.setBorder(null);
+		this.contentsSplitPane.setBorder(null);
 		this.titleSplitPane.setDividerSize(0);
 		this.contentsSplitPane.setDividerSize(0);
 				
