@@ -82,9 +82,9 @@ public class NewNoteFrame extends JFrame implements ActionListener{
 		/**
 		 * JTextField
 		 */
-		this.titleText = new JTextField("The title of your 'Not'it'", 30);
+		this.titleText = new JTextField("Title", 30);
 		this.titleText.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, new Color(231, 76, 60)));
-		this.contentsText = new JTextArea("Write here ...");
+		this.contentsText = new JTextArea("Content");
 		this.contentsText.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, new Color(231, 76, 60)));
 		
 		this.titleText.setPreferredSize(new Dimension(500, 20));

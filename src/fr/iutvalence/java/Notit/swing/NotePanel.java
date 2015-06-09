@@ -15,6 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
+import javax.swing.border.EmptyBorder;
 
 import fr.iutvalence.java.Notit.Application;
 import fr.iutvalence.java.Notit.DayNote;
@@ -23,7 +24,7 @@ import fr.iutvalence.java.Notit.GeneralNote;
 public class NotePanel extends JPanel implements ActionListener{
 
 	private JLabel noteName;
-	private JLabel descriptionNote;
+	private MultiLineLabel descriptionNote;
 	private Button deleteNote;
 	private JButton editNote;
 	private JSplitPane buttonSplit;
@@ -33,6 +34,8 @@ public class NotePanel extends JPanel implements ActionListener{
 	private Application application;
 	private MainFrame theFrame;
 	private DayPanel panel;
+	private JSplitPane optionSplit;
+	private JSplitPane noteSplit;
 
 	public NotePanel(GeneralNote generalNote, MainFrame theFrame){
 		this.generalNote=generalNote;
@@ -57,32 +60,32 @@ public class NotePanel extends JPanel implements ActionListener{
 		this.theFrame = theFrame;
 		this.application = theFrame.getApplication();
 		Dimension dimForButton = new Dimension(30, 30);
-		Dimension dimForLabel = new Dimension(200,30);
+		Dimension dimForTitle = new Dimension(210,30);
+		Dimension dimForContent = new Dimension(210,100);
 		Color color = new Color(231,76,60);
 
-		this.setPreferredSize(new Dimension(250, 75));
+		this.setPreferredSize(new Dimension(240, 140));
 
 		/**
 		 * JLabel
 		 */
 		this.noteName = new JLabel(name);
-		this.noteName.setPreferredSize(dimForLabel);
+		this.noteName.setPreferredSize(dimForTitle);
 		this.noteName.setFont(new Font("LAO UI", 1, 15));
+		this.noteName.setBorder(new EmptyBorder(0,10,0,0));
 		
-		this.descriptionNote = new JLabel(content);
-		this.descriptionNote.setPreferredSize(dimForLabel);
+		this.descriptionNote = new MultiLineLabel(content);
+		this.descriptionNote.setBackground(Color.WHITE);
+		this.descriptionNote.setPreferredSize(dimForContent);
+		this.descriptionNote.setBorder(new EmptyBorder(0,10,0,0));
 
 		/**
 		 * JButton
 		 */
-		ImageIcon iconDelete = new ImageIcon(
-				new ImageIcon("img/cross_white.png").getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
-		this.deleteNote = new Button(iconDelete, dimForButton);
+		this.deleteNote = new Button(new ImageIcon("img/close.png"), dimForButton);
 		this.deleteNote.setBackground(color);
 		
-		ImageIcon iconEdit = new ImageIcon(
-				new ImageIcon("img/pencil_white.png").getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
-		this.editNote = new Button(iconEdit, dimForButton);
+		this.editNote = new Button(new ImageIcon("img/pencil.png"), dimForButton);
 		this.editNote.setBackground(color);
 
 		this.deleteNote.addActionListener(this);
@@ -99,11 +102,19 @@ public class NotePanel extends JPanel implements ActionListener{
 
 		this.buttonSplit.setDividerSize(0);
 		this.labelSplit.setDividerSize(0);
+		
+		JPanel designPanel = new JPanel();
+		designPanel.setBackground(new Color(231, 76, 60));
+		
+		this.optionSplit = new JSplitPane(JSplitPane.VERTICAL_SPLIT, this.buttonSplit, designPanel);
+		this.optionSplit.setDividerSize(0);
+		this.optionSplit.setBorder(null);
 
-		this.add(buttonSplit, BorderLayout.WEST);
-		this.add(labelSplit, BorderLayout.EAST);
-
-
+		
+		this.noteSplit = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, this.optionSplit, this.labelSplit);
+		this.noteSplit.setDividerSize(0);
+		this.noteSplit.setBorder(null);
+		this.add(this.noteSplit);
 	}
 
 	@Override

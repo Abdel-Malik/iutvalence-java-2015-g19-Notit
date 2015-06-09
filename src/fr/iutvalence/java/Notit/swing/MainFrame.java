@@ -17,6 +17,8 @@ public class MainFrame extends JFrame{
 
 	public MainFrame() throws IOException{
 
+		System.setProperty("awt.useSystemAAFontSettings","on");
+		System.setProperty("swing.aatext", "true");
 		this.application = new Application();
 		ImageIcon img = new ImageIcon("img/calendar_icon.png");
 		this.setIconImage(img.getImage());

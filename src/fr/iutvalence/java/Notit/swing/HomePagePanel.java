@@ -57,11 +57,11 @@ public class HomePagePanel extends JPanel implements ActionListener{
 		  /**
 		   * the Buttons.
 		   */
-		  this.toCalendarButton = new Button(new ImageIcon("img/calendar_white.png"),new Dimension(1024,68),"GO TO CALENDAR");
-		  this.toCalendarButton.setFont(new Font("LAO UI", 1, 32));
+		  this.toCalendarButton = new Button(new ImageIcon("img/calendar.png"),new Dimension(1024,68),"  GO TO CALENDAR");
+		  this.toCalendarButton.setFont(new Font("Lao UI", 1, 32));
 		  this.toCalendarButton.setBackground(new Color(231, 76, 60));
 		  
-		  ImageIcon imgPlus = new ImageIcon(new ImageIcon("img/plus.png").getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
+		  ImageIcon imgPlus = new ImageIcon("img/plus.png");
 		  this.addGeneralNoteButton = new Button(imgPlus, new Dimension(buttonDimension));
 		  this.addDayNoteButton = new Button(imgPlus, new Dimension(buttonDimension));
 		  
@@ -76,17 +76,17 @@ public class HomePagePanel extends JPanel implements ActionListener{
 		   *  the labels
 		   */
 		  this.firstLabel = new JLabel("General Note");
-		  this.firstLabel.setForeground(new Color(231, 76, 60));
+		  this.firstLabel.setForeground(new Color(192, 57, 43));
 		  this.firstLabel.setBackground(Color.WHITE);
-		  this.firstLabel.setFont(new Font("LAO UI", 1, 28));
+		  this.firstLabel.setFont(new Font("Lao UI", 1, 28));
 
 		
 		  Date date = new Date();
 		  String currentDay = date.getEntireDate();
 		  this.secondLabel = new JLabel("Note of "+ currentDay);
-		  this.secondLabel.setForeground(new Color(231, 76, 60));
+		  this.secondLabel.setForeground(new Color(192, 57, 43));
 		  this.secondLabel.setBackground(Color.WHITE);
-		  this.secondLabel.setFont(new Font("LAO UI", 1, 28));
+		  this.secondLabel.setFont(new Font("Lao UI", 1, 28));
 
 		  this.firstLabel.setPreferredSize(labelDimension);
 		  this.secondLabel.setPreferredSize(labelDimension);

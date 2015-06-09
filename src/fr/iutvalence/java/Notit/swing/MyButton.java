@@ -12,6 +12,7 @@ public class MyButton extends JButton{
 	public MyButton(){
 		super();
 		this.setBorder(null);
+		this.setFocusPainted(false);
 		this.setBackground(Color.WHITE);
 	}
 	
@@ -20,6 +21,7 @@ public class MyButton extends JButton{
 		this.id = theID;
 		this.setBackground(Color.WHITE);
 		this.setFont(new Font("Lao UI", 1, 15));
+		this.setFocusPainted(false);
 		this.setBorder(null);
 		
 	}

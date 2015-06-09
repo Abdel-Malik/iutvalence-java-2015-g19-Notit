@@ -32,11 +32,12 @@ public class DayPanel extends JPanel implements ActionListener{
 	private MonthPanel theMonthPanel;
 	private NewNoteFrame note;
 	private Date theDate;
+	private JSplitPane allDay;
 	
 	public DayPanel(Date theDate, MonthPanel theMonthPanel, MainFrame frame) throws IOException{
 
-		Dimension buttonDimension = new Dimension(50,30);
-		Dimension labelDimension = new Dimension(974,30);
+		Dimension buttonDimension = new Dimension(50,40);
+		Dimension labelDimension = new Dimension(974,40);
 		  
 		this.theMonthPanel = theMonthPanel;
 		this.theDate = theDate;
@@ -50,12 +51,11 @@ public class DayPanel extends JPanel implements ActionListener{
 		this.toMonthButton = new JButton("to Month");
 		
 		
-		this.toMonthButton = new Button(new ImageIcon("img/calendar_white.png"),new Dimension(1024,68),"TO MONTH");
-		this.toMonthButton.setFont(new Font("LAO UI", 1, 32));
+		this.toMonthButton = new Button(new ImageIcon("img/arrow-left.png"),new Dimension(1024, 68),"  GO TO MONTH");
+		this.toMonthButton.setFont(new Font("Lao UI", 1, 32));
 		this.toMonthButton.setBackground(new Color(231, 76, 60));
 		
-		ImageIcon imgPlus = new ImageIcon(new ImageIcon("img/plus.png").getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
-		this.addDayNoteButton = new Button(imgPlus, new Dimension(buttonDimension));
+		this.addDayNoteButton = new Button(new ImageIcon("img/plus.png"), new Dimension(buttonDimension));
 		this.addDayNoteButton.setBackground(Color.WHITE);
 		
 		this.toMonthButton.addActionListener(this);
@@ -66,7 +66,7 @@ public class DayPanel extends JPanel implements ActionListener{
 		 *  the labels
 		 */
 		this.noteLabel = new JLabel("Note of "+ theDate.getEntireDate(), JLabel.CENTER);
-		this.noteLabel.setForeground(new Color(231, 76, 60));
+		this.noteLabel.setForeground(new Color(192, 57, 43));
 		this.noteLabel.setBackground(Color.WHITE);
 		this.noteLabel.setFont(new Font("LAO UI", 1, 28));
 		this.noteLabel.setPreferredSize(labelDimension);
@@ -89,10 +89,12 @@ public class DayPanel extends JPanel implements ActionListener{
 		this.noteSplit.setBorder(null);
 		this.noteSplit.setBackground(Color.WHITE);
 
+		this.allDay = new JSplitPane(JSplitPane.VERTICAL_SPLIT, this.noteSplit, this.notePanel);
+		this.allDay.setDividerSize(0);
+		this.allDay.setBorder(null);
 
 		this.add(toMonthButton, BorderLayout.PAGE_START);
-		this.add(noteSplit, BorderLayout.CENTER);
-		this.add(notePanel, BorderLayout.PAGE_END);
+		this.add(allDay, BorderLayout.CENTER);
 		
 		this.displayDayNotePanel();
 		

@@ -38,8 +38,7 @@ public class CalendarPanel extends JPanel implements ActionListener{
 		/**
 		 * the JButton
 		 */
-		ImageIcon imgHome = new ImageIcon(new ImageIcon("img/home_white.png").getImage().getScaledInstance(55, 55, Image.SCALE_DEFAULT));
-		this.toHomePagebutton = new Button(imgHome, new Dimension(1024,68), "GO TO HOMEPAGE");
+		this.toHomePagebutton = new Button(new ImageIcon("img/home.png"), new Dimension(1024,68), "  GO TO HOMEPAGE");
 		this.toHomePagebutton.setFont(new Font("LAO UI", 1, 32));
 		this.toHomePagebutton.setBackground(new Color(231, 76, 60));
 	  	this.toHomePagebutton.addActionListener(this);
@@ -69,6 +68,7 @@ public class CalendarPanel extends JPanel implements ActionListener{
 			this.tableButton[month].setForeground(new Color(231, 76, 60));
 			this.tableButton[month].setFont(new Font("Lao UI", 1, 24));
 			this.tableButton[month].setBorder(null);
+			this.tableButton[month].setFocusPainted(false);
 			this.tableButton[month].addActionListener(this);
 			this.panelOfMonthButton.add(tableButton[month]);
 		}

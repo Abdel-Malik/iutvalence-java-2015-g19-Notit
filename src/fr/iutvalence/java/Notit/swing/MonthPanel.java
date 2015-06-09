@@ -47,8 +47,8 @@ public class MonthPanel extends JPanel implements ActionListener{
 		/**
 		 * the JButton
 		 */
-		ImageIcon imgHome = new ImageIcon(new ImageIcon("img/calendar_white.png").getImage().getScaledInstance(55, 55, Image.SCALE_DEFAULT));
-		this.homePageButton = new Button(imgHome, new Dimension(1024,68), "GO TO CALENDAR");
+		ImageIcon imgHome = new ImageIcon(new ImageIcon("img/arrow-left.png").getImage().getScaledInstance(55, 55, Image.SCALE_DEFAULT));
+		this.homePageButton = new Button(imgHome, new Dimension(1024,68), "  GO TO CALENDAR");
 		this.homePageButton.setFont(new Font("Lao UI", 1, 32));
 		this.homePageButton.setBackground(new Color(231, 76, 60));
 		this.homePageButton.addActionListener(this);
