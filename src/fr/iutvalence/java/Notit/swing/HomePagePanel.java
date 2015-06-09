@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -43,30 +44,29 @@ public class HomePagePanel extends JPanel implements ActionListener{
 	
 	public HomePagePanel(MainFrame frame, Application application) throws IOException{
 		
-		  Dimension buttonDimension = new Dimension(200,50);
-		  Dimension labelDimension = new Dimension(824,50);
+		  Dimension buttonDimension = new Dimension(50,30);
+		  Dimension labelDimension = new Dimension(974,30);
 		  Dimension panelDimension = new Dimension(1024,300);
 		  
 		  this.application = application;
 		  this.theFrame = frame;
 		
-		  this.setSize(1024, 768); 
+		  this.setSize(1024, 768);
+		  this.setBackground(Color.WHITE);
 
 		  /**
 		   * the Buttons.
 		   */
-		  this.toCalendarButton = new Button(new ImageIcon("img/calendar_white.png"),new Dimension(1024,68),"CALENDAR");
-		  this.addGeneralNoteButton = new JButton("addGeneralNote");
-		  this.addDayNoteButton = new JButton("addDayNote");
+		  this.toCalendarButton = new Button(new ImageIcon("img/calendar_white.png"),new Dimension(1024,68),"GO TO CALENDAR");
+		  ImageIcon imgPlus = new ImageIcon(new ImageIcon("img/plus.png").getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
+		  this.addGeneralNoteButton = new Button(imgPlus, new Dimension(buttonDimension));
+		  this.addDayNoteButton = new Button(imgPlus, new Dimension(buttonDimension));
 		  
-		  this.toCalendarButton.setFont(new Font("Clarendon blk BT", 1, 25));
+		  this.toCalendarButton.setFont(new Font("LAO UI", 1, 32));
 		  this.toCalendarButton.setBackground(new Color(231, 76, 60));
-
-		  this.addGeneralNoteButton.setPreferredSize(buttonDimension);
-		  this.addGeneralNoteButton.setBackground(Color.YELLOW);
-
-		  this.addDayNoteButton.setPreferredSize(buttonDimension);
-		  this.addDayNoteButton.setBackground(Color.YELLOW);
+		  
+		  this.addGeneralNoteButton.setBackground(Color.WHITE);
+		  this.addDayNoteButton.setBackground(Color.WHITE);
 		  
 		  this.toCalendarButton.addActionListener(this);
 		  this.addGeneralNoteButton.addActionListener(this);
@@ -76,16 +76,20 @@ public class HomePagePanel extends JPanel implements ActionListener{
 		   *  the labels
 		   */
 		  this.firstLabel = new JLabel("General Note");
+		  this.firstLabel.setForeground(new Color(231, 76, 60));
+		  this.firstLabel.setBackground(Color.WHITE);
+		  this.firstLabel.setFont(new Font("LAO UI", 1, 28));
 
 		
 		  Date date = new Date();
 		  String currentDay = date.getEntireDate();
 		  this.secondLabel = new JLabel("Note of "+ currentDay);
+		  this.secondLabel.setForeground(new Color(231, 76, 60));
+		  this.secondLabel.setBackground(Color.WHITE);
+		  this.secondLabel.setFont(new Font("LAO UI", 1, 28));
 
-		  this.firstLabel.setMinimumSize(labelDimension);
-		  this.firstLabel.setBackground(Color.GREEN);
-		  this.secondLabel.setMinimumSize(labelDimension);
-		  this.secondLabel.setBackground(Color.GREEN);
+		  this.firstLabel.setPreferredSize(labelDimension);
+		  this.secondLabel.setPreferredSize(labelDimension);
 		  
 		  /**
 		   * the panels
@@ -93,8 +97,8 @@ public class HomePagePanel extends JPanel implements ActionListener{
 		  this.generalNotePanel = new JPanel();
 		  this.dayNotePanel = new JPanel();
 		  
-		  this.generalNotePanel.setBackground(Color.BLUE);
-		  this.dayNotePanel.setBackground(Color.BLUE);
+		  this.generalNotePanel.setBackground(Color.WHITE);
+		  this.dayNotePanel.setBackground(Color.WHITE);
 		  this.generalNotePanel.setPreferredSize(panelDimension);
 		  this.dayNotePanel.setPreferredSize(panelDimension);
 
@@ -106,6 +110,16 @@ public class HomePagePanel extends JPanel implements ActionListener{
 		  this.dayNoteSplit = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, secondLabel, addDayNoteButton);
 		  this.allGeneral = new JSplitPane(JSplitPane.VERTICAL_SPLIT, generalNoteSplit, generalNotePanel);
 		  this.allDay = new JSplitPane(JSplitPane.VERTICAL_SPLIT, dayNoteSplit, dayNotePanel);
+		  
+		  this.generalNoteSplit.setBackground(Color.WHITE);
+		  this.dayNoteSplit.setBackground(Color.WHITE);
+		  this.allGeneral.setBackground(Color.WHITE);
+		  this.allDay.setBackground(Color.WHITE);
+		  
+		  this.generalNoteSplit.setBorder(null);
+		  this.dayNoteSplit.setBorder(null);
+		  this.allGeneral.setBorder(null);
+		  this.allDay.setBorder(null);
 		  
 		  this.generalNoteSplit.setDividerSize(0);
 		  this.dayNoteSplit.setDividerSize(0);

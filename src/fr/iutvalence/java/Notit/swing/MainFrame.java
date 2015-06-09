@@ -1,6 +1,7 @@
 package fr.iutvalence.java.Notit.swing;
 
 
+import java.awt.Color;
 import java.io.IOException;
 
 import javax.swing.ImageIcon;
@@ -27,7 +28,7 @@ public class MainFrame extends JFrame{
 		this.calendarPanel = new CalendarPanel(this);
 		this.homePage = new HomePagePanel(this, this.application);
 		this.getContentPane().add(this.homePage);
-
+		this.setBackground(Color.WHITE);
 		this.setVisible(true);
 	}
 
