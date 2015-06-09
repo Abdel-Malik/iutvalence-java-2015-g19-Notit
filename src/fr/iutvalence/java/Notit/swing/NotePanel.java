@@ -3,6 +3,7 @@ package fr.iutvalence.java.Notit.swing;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -50,6 +51,9 @@ public class NotePanel extends JPanel implements ActionListener{
 	}
 
 	public void display(String name, String content, MainFrame theFrame){
+		
+		this.setBackground(Color.WHITE);
+		
 		this.theFrame = theFrame;
 		this.application = theFrame.getApplication();
 		Dimension dimForButton = new Dimension(30, 30);
@@ -63,6 +67,8 @@ public class NotePanel extends JPanel implements ActionListener{
 		 */
 		this.noteName = new JLabel(name);
 		this.noteName.setPreferredSize(dimForLabel);
+		this.noteName.setFont(new Font("LAO UI", 1, 15));
+		
 		this.descriptionNote = new JLabel(content);
 		this.descriptionNote.setPreferredSize(dimForLabel);
 
@@ -85,7 +91,11 @@ public class NotePanel extends JPanel implements ActionListener{
 		 * JSplitPane
 		 */
 		this.buttonSplit = new JSplitPane(JSplitPane.VERTICAL_SPLIT, deleteNote, editNote);
-		this.labelSplit = new JSplitPane(JSplitPane.VERTICAL_SPLIT, noteName, descriptionNote);	
+		this.labelSplit = new JSplitPane(JSplitPane.VERTICAL_SPLIT, noteName, descriptionNote);
+		
+		this.buttonSplit.setBorder(null);
+		this.labelSplit.setBorder(null);
+		this.labelSplit.setBackground(Color.WHITE);
 
 		this.buttonSplit.setDividerSize(0);
 		this.labelSplit.setDividerSize(0);
