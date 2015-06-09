@@ -4,16 +4,12 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.text.DateFormatSymbols;
-import java.util.Locale;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
@@ -30,7 +26,6 @@ public class DayPanel extends JPanel implements ActionListener{
 	private JPanel notePanel;
 	private JSplitPane noteSplit;
 	private MonthPanel theMonthPanel;
-	private NewNoteFrame note;
 	private Date theDate;
 	private JSplitPane allDay;
 	
@@ -120,7 +115,7 @@ public class DayPanel extends JPanel implements ActionListener{
 			this.theFrame.revalidate();
 		}
 		if(e.getSource()==this.addDayNoteButton){
-			this.note = new NewNoteFrame(this.theDate, this, this.theFrame);
+			new NewNoteFrame(this.theDate, this, this.theFrame);
 		}
 		
 	}

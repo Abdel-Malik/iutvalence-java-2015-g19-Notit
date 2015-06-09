@@ -6,7 +6,6 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.TileObserver;
 import java.io.IOException;
 
 import javax.swing.BorderFactory;
@@ -16,12 +15,8 @@ import javax.swing.JLabel;
 import javax.swing.JSplitPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.plaf.DimensionUIResource;
 
 import fr.iutvalence.java.Notit.Date;
-import fr.iutvalence.java.Notit.DayNote;
-import fr.iutvalence.java.Notit.GeneralNote;
-import fr.iutvalence.java.Notit.Path;
 
 public class NewNoteFrame extends JFrame implements ActionListener{
 

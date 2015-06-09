@@ -31,7 +31,7 @@ public class DayNote extends Note
 	public void editNote() throws IOException {
 		File file = null;
 		FileWriter write = null;
-		String path = "Notes/"+this.date.get(date.YEAR) + "-" + this.date.get(date.MONTH) + "-" + this.date.get(date.DAY_OF_MONTH);
+		String path = "Notes/"+this.date.get(Date.YEAR) + "-" + this.date.get(Date.MONTH) + "-" + this.date.get(Date.DAY_OF_MONTH);
 		if (!Path.checkPath(path))
 			Path.createPath(path);
 		file = new File(path+"/"+this.number);

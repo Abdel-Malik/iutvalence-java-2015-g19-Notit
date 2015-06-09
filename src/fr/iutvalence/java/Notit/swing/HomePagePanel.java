@@ -4,7 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -39,7 +38,6 @@ public class HomePagePanel extends JPanel implements ActionListener{
 	private JSplitPane dayNoteSplit;
 	private JSplitPane allGeneral;
 	private JSplitPane allDay;
-	private NewNoteFrame note;
 	private Application application;
 	
 	public HomePagePanel(MainFrame frame, Application application) throws IOException{
@@ -168,12 +166,12 @@ public class HomePagePanel extends JPanel implements ActionListener{
 		}
 		
 		if(e.getSource()==this.addGeneralNoteButton){
-			this.note = new NewNoteFrame(this.theFrame);
+			new NewNoteFrame(this.theFrame);
 		}
 		
 		if(e.getSource()==this.addDayNoteButton){
 			try {
-				this.note = new NewNoteFrame(new Date(), this.theFrame);
+				new NewNoteFrame(new Date(), this.theFrame);
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}

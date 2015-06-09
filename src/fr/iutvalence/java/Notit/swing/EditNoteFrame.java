@@ -16,9 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JSplitPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.plaf.DimensionUIResource;
 
-import fr.iutvalence.java.Notit.Date;
 import fr.iutvalence.java.Notit.DayNote;
 import fr.iutvalence.java.Notit.GeneralNote;
 
@@ -32,7 +30,6 @@ public class EditNoteFrame extends JFrame implements ActionListener{
 	private JTextArea contentsText;
 	private JSplitPane titleSplitPane;
 	private JSplitPane contentsSplitPane;
-	private Date date;
 	private DayPanel panel;
 	private DayNote dayNote;
 	private GeneralNote generalNote;

@@ -1,9 +1,5 @@
 package fr.iutvalence.java.Notit;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-
 /**
  * A Note.
  * 
