@@ -1,11 +1,14 @@
 package fr.iutvalence.java.Notit.swing;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -20,7 +23,7 @@ public class NotePanel extends JPanel implements ActionListener{
 
 	private JLabel noteName;
 	private JLabel descriptionNote;
-	private JButton deleteNote;
+	private Button deleteNote;
 	private JButton editNote;
 	private JSplitPane buttonSplit;
 	private JSplitPane labelSplit;
@@ -49,8 +52,9 @@ public class NotePanel extends JPanel implements ActionListener{
 	public void display(String name, String content, MainFrame theFrame){
 		this.theFrame = theFrame;
 		this.application = theFrame.getApplication();
-		Dimension dimForButton = new Dimension(70, 30);
-		Dimension dimForLabel = new Dimension(150,30);
+		Dimension dimForButton = new Dimension(30, 30);
+		Dimension dimForLabel = new Dimension(200,30);
+		Color color = new Color(231,76,60);
 
 		this.setPreferredSize(new Dimension(250, 75));
 
@@ -65,10 +69,15 @@ public class NotePanel extends JPanel implements ActionListener{
 		/**
 		 * JButton
 		 */
-		this.deleteNote = new JButton("delete");
-		this.deleteNote.setPreferredSize(dimForButton);
-		this.editNote = new JButton("edit");
-		this.editNote.setPreferredSize(dimForButton);
+		ImageIcon iconDelete = new ImageIcon(
+				new ImageIcon("img/cross_white.png").getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
+		this.deleteNote = new Button(iconDelete, dimForButton);
+		this.deleteNote.setBackground(color);
+		
+		ImageIcon iconEdit = new ImageIcon(
+				new ImageIcon("img/pencil_white.png").getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
+		this.editNote = new Button(iconEdit, dimForButton);
+		this.editNote.setBackground(color);
 
 		this.deleteNote.addActionListener(this);
 		this.editNote.addActionListener(this);
@@ -153,8 +162,6 @@ public class NotePanel extends JPanel implements ActionListener{
 			else{
 				new EditNoteFrame(this.generalNote, this.theFrame);
 			}
-
-
 		}
 
 	}

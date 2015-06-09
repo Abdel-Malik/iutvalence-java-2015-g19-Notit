@@ -74,8 +74,6 @@ public class EditNoteFrame extends JFrame implements ActionListener{
 
 	}
 	
-
-		
 	
 	private void displayOfFrame(MainFrame frame){
 		this.setTitle("NotIt");
@@ -83,7 +81,6 @@ public class EditNoteFrame extends JFrame implements ActionListener{
 		this.setResizable(false); 
 		this.setLocationRelativeTo(null);
 		this.theFrame = frame;
-		
 		/**
 		 * JButton
 		 */
