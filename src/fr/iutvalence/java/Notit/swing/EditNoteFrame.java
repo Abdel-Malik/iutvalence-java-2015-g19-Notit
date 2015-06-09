@@ -4,7 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.TileObserver;
 import java.io.IOException;
 
 import javax.swing.JButton;
@@ -18,12 +17,11 @@ import javax.swing.plaf.DimensionUIResource;
 import fr.iutvalence.java.Notit.Date;
 import fr.iutvalence.java.Notit.DayNote;
 import fr.iutvalence.java.Notit.GeneralNote;
-import fr.iutvalence.java.Notit.Path;
 
-public class NewNoteFrame extends JFrame implements ActionListener{
+public class EditNoteFrame extends JFrame implements ActionListener{
 
 	private MainFrame theFrame;
-	private JButton addNoteButton;
+	private JButton editNoteButton;
 	private JLabel titleLabel;
 	private JLabel contentsLabel;
 	private JTextField titleText;
@@ -32,21 +30,52 @@ public class NewNoteFrame extends JFrame implements ActionListener{
 	private JSplitPane contentsSplitPane;
 	private Date date;
 	private DayPanel panel;
+	private DayNote dayNote;
+	private GeneralNote generalNote;
 	
-	public NewNoteFrame(MainFrame frame){
-		displayOfFrame(frame);
+	
+	public EditNoteFrame(DayNote dayNote, MainFrame frame){
+		
+		this.dayNote = dayNote;
+		/**
+		 * JTextField
+		 */
+		this.titleText = new JTextField(this.dayNote.getTitle(), 30);
+		this.contentsText = new JTextArea(this.dayNote.getContent());
+		
+		this.displayOfFrame(frame);
+
 	}
 	
-	public NewNoteFrame(Date date, MainFrame frame){
-		this.date=date;
-		displayOfFrame(frame);
+	public EditNoteFrame(GeneralNote generalNote, MainFrame frame){
+		this.generalNote = generalNote;
+		/**
+		 * JTextField
+		 */
+		this.titleText = new JTextField(this.generalNote.getTitle(), 30);
+		this.contentsText = new JTextArea(this.generalNote.getContent());
+		
+		this.displayOfFrame(frame);
+		
+		
 	}
 	
-	public NewNoteFrame(Date date, DayPanel panel, MainFrame frame){
+	public EditNoteFrame(DayNote dayNote, DayPanel panel, MainFrame frame){
+		
+		this.dayNote = dayNote;
 		this.panel = panel;
-		this.date=date;
-		displayOfFrame(frame);
+		/**
+		 * JTextField
+		 */
+		this.titleText = new JTextField(this.dayNote.getTitle(), 30);
+		this.contentsText = new JTextArea(this.dayNote.getContent());
+		
+		this.displayOfFrame(frame);
+
 	}
+	
+
+		
 	
 	private void displayOfFrame(MainFrame frame){
 		this.setTitle("NotIt");
@@ -58,9 +87,9 @@ public class NewNoteFrame extends JFrame implements ActionListener{
 		/**
 		 * JButton
 		 */
-		this.addNoteButton = new JButton("Add new note");
-		this.addNoteButton.addActionListener(this);
-		this.addNoteButton.setPreferredSize(new Dimension(500, 40));
+		this.editNoteButton = new JButton("Edit");
+		this.editNoteButton.addActionListener(this);
+		this.editNoteButton.setPreferredSize(new Dimension(500, 40));
 		/**
 		 * JLabel
 		 */
@@ -68,18 +97,15 @@ public class NewNoteFrame extends JFrame implements ActionListener{
 		this.titleLabel = new JLabel("Title :");
 		this.contentsLabel = new JLabel("Contents :");
 		
-		this.titleLabel.setPreferredSize(new DimensionUIResource(500, 20));
+		this.titleLabel.setPreferredSize(new Dimension(500, 20));
 		this.contentsLabel.setPreferredSize(new Dimension(500, 20));
-		
+
 		/**
 		 * JTextField
 		 */
-		this.titleText = new JTextField("The title of your 'Not'it'", 30);
-		this.contentsText = new JTextArea("Write here ...");
-		
-		this.titleText.setPreferredSize(new DimensionUIResource(500, 20));
+		this.titleText.setPreferredSize(new Dimension(500, 20));
 		this.contentsText.setPreferredSize(new Dimension(500, 270));
-
+		
 		/**
 		 * JSplitPane
 		 */
@@ -90,22 +116,20 @@ public class NewNoteFrame extends JFrame implements ActionListener{
 				
 		this.add(titleSplitPane, BorderLayout.PAGE_START);
 		this.add(contentsSplitPane, BorderLayout.CENTER);
-		this.add(addNoteButton, BorderLayout.PAGE_END);
+		this.add(editNoteButton, BorderLayout.PAGE_END);
 		
 		this.setVisible(true);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource()==this.addNoteButton)
-			if(this.date==null){
+		if(e.getSource()==this.editNoteButton)
+			if(this.generalNote!=null){
 				try {
-					this.theFrame.getApplication().createGNotes(this.titleText.getText(), this.contentsText.getText());
+					this.theFrame.getApplication().editGNotes(this.generalNote, this.titleText.getText(), this.contentsText.getText());
 					this.dispose();
 					this.theFrame.getHomePage().displayGeneralNote();
-					
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
@@ -113,25 +137,24 @@ public class NewNoteFrame extends JFrame implements ActionListener{
 				if(this.panel==null)
 				{
 					try {
-						this.theFrame.getApplication().createDayNotes(this.titleText.getText(), this.contentsText.getText(), this.date);
+						this.theFrame.getApplication().editDayNotes(this.dayNote, titleText.getText(), contentsText.getText());
 						this.dispose();
 						this.theFrame.getHomePage().displayDayNote();
 					} catch (IOException e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
 				}
 				else{
 					try {
-						this.theFrame.getApplication().createDayNotes(this.titleText.getText(), this.contentsText.getText(), this.date);
+						this.theFrame.getApplication().editDayNotes(this.dayNote, titleText.getText(), contentsText.getText());
 						this.dispose();
 						this.panel.displayDayNotePanel();
 					} catch (IOException e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
 				}
 				
 			}
 	}
+
 }

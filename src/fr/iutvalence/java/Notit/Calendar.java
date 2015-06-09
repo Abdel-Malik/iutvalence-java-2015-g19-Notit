@@ -18,6 +18,7 @@ public class Calendar
 	 * The list of date for a month.
 	 */
 	private Set<Date> listOfDateForAMonth;
+	private int monthNumber;
 
 	/**
 	 * The Calendar's constructor.
@@ -28,6 +29,7 @@ public class Calendar
 	 */
 	public Calendar(int month, int year) throws IOException
 	{
+		this.monthNumber = month;
 		this.listOfDateForAMonth = listOfDateForAMonth(month, year);
 	}
 
@@ -91,6 +93,10 @@ public class Calendar
 			}
 		}
 		return 0;
+	}
+	
+	public int getMonthNumber() {
+		return monthNumber;
 	}
 
 	/**

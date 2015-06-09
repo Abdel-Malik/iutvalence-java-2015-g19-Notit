@@ -6,16 +6,11 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.text.DateFormatSymbols;
-import java.util.Locale;
-import java.util.Set;
-
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
-
+import fr.iutvalence.java.Notit.Application;
 import fr.iutvalence.java.Notit.Date;
 import fr.iutvalence.java.Notit.DayNote;
 import fr.iutvalence.java.Notit.GeneralNote;
@@ -40,17 +35,15 @@ public class HomePagePanel extends JPanel implements ActionListener{
 	private JSplitPane allGeneral;
 	private JSplitPane allDay;
 	private NewNoteFrame note;
-	private Set<GeneralNote> generalNotes;
-	private Set<DayNote> dayNotes;
+	private Application application;
 	
-	public HomePagePanel(MainFrame frame, Set<GeneralNote> generalNote, Set<DayNote> dayNote) throws IOException{
+	public HomePagePanel(MainFrame frame, Application application) throws IOException{
 		
 		  Dimension buttonDimension = new Dimension(200,50);
 		  Dimension labelDimension = new Dimension(824,50);
 		  Dimension panelDimension = new Dimension(1024,300);
 		  
-		  this.generalNotes = generalNote;
-		  this.dayNotes = dayNote;
+		  this.application = application;
 		  this.theFrame = frame;
 		
 		  this.setSize(1024, 768); 
@@ -114,15 +107,37 @@ public class HomePagePanel extends JPanel implements ActionListener{
 		  this.dayNoteSplit.setDividerSize(0);
 		  this.allGeneral.setDividerSize(0);
 		  this.allDay.setDividerSize(0); 
-		  
+
 		  this.add(toCalendarButton, BorderLayout.PAGE_START);
 		  this.add(allGeneral, BorderLayout.CENTER);
 		  this.add(allDay, BorderLayout.PAGE_END);
 
 		  this.displayGeneralNote();
 		  this.displayDayNote();
-		  this.setVisible(true);
-		  
+
+	}
+
+	
+	public void displayGeneralNote() throws IOException{
+		this.setVisible(false);
+		this.generalNotePanel.removeAll();
+		for(GeneralNote generalNote : this.application.getGeneralNote()){
+			this.generalNotePanel.add(new NotePanel(generalNote, this.theFrame));
+		}
+		this.generalNotePanel.revalidate();
+		this.setVisible(true);
+	}
+
+
+	
+	public void displayDayNote() throws IOException{
+		this.setVisible(false);
+		this.dayNotePanel.removeAll();
+		for(DayNote dayNote : this.application.getDayNote()){
+			this.dayNotePanel.add(new NotePanel(dayNote, this.theFrame));
+		}
+		this.dayNotePanel.revalidate();
+		this.setVisible(true);
 	}
 
 
@@ -134,32 +149,18 @@ public class HomePagePanel extends JPanel implements ActionListener{
 			this.theFrame.setContentPane(this.theFrame.getCalendarPanel());
 			this.theFrame.revalidate();
 		}
+		
 		if(e.getSource()==this.addGeneralNoteButton){
 			this.note = new NewNoteFrame(this.theFrame);
-			this.note.setVisible(true);
 		}
+		
 		if(e.getSource()==this.addDayNoteButton){
-			this.note = new NewNoteFrame(this.theFrame);
-			this.note.setVisible(true);
+			try {
+				this.note = new NewNoteFrame(new Date(), this.theFrame);
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
 		}
 	}
-
-	
-	public void displayGeneralNote(){
-		this.generalNotePanel.removeAll();
-		for(GeneralNote generalNote : this.generalNotes){
-			this.generalNotePanel.add(new NewNotePanel(generalNote.getNumber(), generalNote.getTitle(), generalNote.getContent()));
-		}
-		this.generalNotePanel.revalidate();
-	}
-
-	
-	private void displayDayNote(){
-		for(DayNote dayNote : this.dayNotes){
-			this.dayNotePanel.add(new NewNotePanel(dayNote.getNumber(), dayNote.getTitle(), dayNote.getContent()));
-		}
-	}
-
-
 
 }

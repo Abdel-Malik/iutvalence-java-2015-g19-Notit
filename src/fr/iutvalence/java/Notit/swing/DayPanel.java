@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 
 import fr.iutvalence.java.Notit.Date;
+import fr.iutvalence.java.Notit.DayNote;
 
 public class DayPanel extends JPanel implements ActionListener{
 
@@ -26,10 +27,13 @@ public class DayPanel extends JPanel implements ActionListener{
 	private JPanel notePanel;
 	private JSplitPane noteSplit;
 	private MonthPanel theMonthPanel;
+	private NewNoteFrame note;
+	private Date theDate;
 	
 	public DayPanel(Date theDate, MonthPanel theMonthPanel, MainFrame frame) throws IOException{
 
 		this.theMonthPanel = theMonthPanel;
+		this.theDate = theDate;
 		this.theFrame = frame;
 		this.setSize(1024, 768); 
 
@@ -74,12 +78,23 @@ public class DayPanel extends JPanel implements ActionListener{
 		this.noteSplit.setDividerSize(0);
 
 
-
-
 		this.add(toMonthButton, BorderLayout.PAGE_START);
 		this.add(noteSplit, BorderLayout.CENTER);
 		this.add(notePanel, BorderLayout.PAGE_END);
-
+		
+		this.displayDayNotePanel();
+		
+		this.setVisible(true);
+	}
+	
+	public void displayDayNotePanel() throws IOException{
+		this.setVisible(false);
+		this.notePanel.removeAll();
+		this.theDate.updateListOfNote();
+		for(DayNote dayNote : this.theDate.getListOfNote()){
+			this.notePanel.add(new NotePanel(dayNote, this, this.theFrame));
+		}
+		this.notePanel.revalidate();
 		this.setVisible(true);
 	}
 
@@ -89,6 +104,9 @@ public class DayPanel extends JPanel implements ActionListener{
 		if(e.getSource()== this.toMonthButton){
 			this.theFrame.setContentPane(this.theMonthPanel);
 			this.theFrame.revalidate();
+		}
+		if(e.getSource()==this.addDayNoteButton){
+			this.note = new NewNoteFrame(this.theDate, this, this.theFrame);
 		}
 		
 	}

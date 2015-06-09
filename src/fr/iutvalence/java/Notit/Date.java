@@ -57,6 +57,10 @@ public class Date extends GregorianCalendar
 		this.monthName = monthsName[this.get(MONTH)];
 	}
 	
+	public void updateListOfNote() throws IOException{
+		this.listOfNote = new NoteList(this).getlistOfDayNote();
+	}
+	
 	public Set<DayNote> getListOfNote() {
 		return listOfNote;
 	}

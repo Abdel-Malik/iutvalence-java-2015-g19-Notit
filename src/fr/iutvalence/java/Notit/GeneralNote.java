@@ -35,7 +35,7 @@ public class GeneralNote extends Note{
 	}
 	
 	public void deleteNote(){
-		String path = "GeneralesNotes"+"/"+this.number;
+		String path = "GeneralNotes"+"/"+this.number;
 		if(Path.checkPath(path)){
 			File file = new File(path);
 			file.delete();

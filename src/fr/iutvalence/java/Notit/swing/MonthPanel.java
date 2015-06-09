@@ -30,13 +30,14 @@ public class MonthPanel extends JPanel implements ActionListener{
 	private int theMonth;
 	private MonthPanel thisPanel;
 
-	public MonthPanel(int numberOfMonth, MainFrame frame) throws IOException{
+	public MonthPanel(Calendar calendar, MainFrame frame) throws IOException{
 
+		this.theCalendar = calendar;
 		this.thisPanel = this;
-		this.theMonth = numberOfMonth;
+		this.theMonth = theCalendar.getMonthNumber();
 		this.theFrame = frame;
 		this.setSize(1024, 768); 
-		this.theCalendar = new Calendar(numberOfMonth, new Date().get(Date.YEAR));
+		
 
 		/**
 		 * the JButton
@@ -51,7 +52,7 @@ public class MonthPanel extends JPanel implements ActionListener{
 		 */
 		DateFormatSymbols elementInYear = new DateFormatSymbols(Locale.ENGLISH); // elementInYear = English date format
 		String[] theMonth = elementInYear.getMonths(); // theMonth = different moth in the year in English
-		String alphaMonth = theMonth[numberOfMonth];
+		String alphaMonth = theMonth[this.theMonth];
 		this.currentYear =  new Date().get(Date.YEAR);
 		this.monthOfYear = new JLabel(alphaMonth+" "+ this.currentYear, JLabel.CENTER);
 		this.daysPanel = new JPanel(new GridLayout(1,7));

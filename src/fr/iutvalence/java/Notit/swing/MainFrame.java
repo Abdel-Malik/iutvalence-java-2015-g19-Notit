@@ -13,10 +13,6 @@ public class MainFrame extends JFrame{
 	private CalendarPanel calendarPanel;
 	private Application application;
 
-	public Application getApplication() {
-		return application;
-	}
-
 	public MainFrame() throws IOException{
 
 		this.application = new Application();
@@ -26,7 +22,7 @@ public class MainFrame extends JFrame{
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.calendarPanel = new CalendarPanel(this);
-		this.homePage = new HomePagePanel(this, this.application.getGeneralNote(), this.application.getDayNote());
+		this.homePage = new HomePagePanel(this, this.application);
 		this.getContentPane().add(this.homePage);
 
 		this.setVisible(true);
@@ -40,5 +36,9 @@ public class MainFrame extends JFrame{
 		return homePage;
 	}
 	
+	public Application getApplication() {
+		return application;
+	}
+
 
 }
