@@ -20,8 +20,14 @@ public class Date extends GregorianCalendar
 	 */
 	private Set<DayNote> listOfNote;
 	
+	/**
+	 * The name of the day.
+	 */
 	private String dayName;
 	
+	/**
+	 * The name of the month.
+	 */
 	private String monthName;
 
 	/**
@@ -48,6 +54,9 @@ public class Date extends GregorianCalendar
 		this.searchName();
 	}
 	
+	/**
+	 * Define the day and month name.
+	 */
 	private void searchName()
 	{
 		DateFormatSymbols formatSymbol = new DateFormatSymbols(Locale.ENGLISH); // elementInYear = English date format
@@ -57,18 +66,34 @@ public class Date extends GregorianCalendar
 		this.monthName = monthsName[this.get(MONTH)];
 	}
 	
+	/**
+	 * Update the list of note.
+	 * @throws IOException
+	 */
 	public void updateListOfNote() throws IOException{
 		this.listOfNote = new NoteList(this).getlistOfDayNote();
 	}
 	
+	/**
+	 * Getter to get the list of note
+	 * @return Set<DayNote>
+	 */
 	public Set<DayNote> getListOfNote() {
 		return listOfNote;
 	}
 	
+	/**
+	 * Get a String of the date (Wednesday 10 June 2015).
+	 * @return String
+	 */
 	public String getEntireDate(){
 		return this.dayName + " " + this.get(DAY_OF_MONTH) + " " + this.monthName + " " + this.get(YEAR);
 	}
 	
+	/**
+	 * Get a String of the date (2015-05-10).
+	 * @return String
+	 */
 	public String getDate(){
 		return this.get(YEAR) + "-" + this.get(MONTH) + "-" + this.get(DAY_OF_MONTH);
 	}

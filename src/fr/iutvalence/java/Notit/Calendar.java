@@ -18,6 +18,10 @@ public class Calendar
 	 * The list of date for a month.
 	 */
 	private Set<Date> listOfDateForAMonth;
+	
+	/**
+	 * the month number.
+	 */
 	private int monthNumber;
 
 	/**
@@ -85,6 +89,10 @@ public class Calendar
 		this.listOfDateForAMonth = listOfDateForAMonth(month, year);
 	}
 	
+	/**
+	 * Return the day number of the first day.
+	 * @return
+	 */
 	public int getFirstDay(){
 		for (Date date : listOfDateForAMonth)
 		{
@@ -95,6 +103,10 @@ public class Calendar
 		return 0;
 	}
 	
+	/**
+	 * Getter to get the month number.
+	 * @return
+	 */
 	public int getMonthNumber() {
 		return monthNumber;
 	}
