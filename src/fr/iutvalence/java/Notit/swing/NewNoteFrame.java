@@ -132,6 +132,7 @@ public class NewNoteFrame extends JFrame implements ActionListener{
 					try {
 						this.theFrame.getApplication().createDayNotes(this.titleText.getText(), this.contentsText.getText(), this.date);
 						this.dispose();
+						this.theFrame.getHomePage().displayDayNote();
 						this.panel.displayDayNotePanel();
 					} catch (IOException e1) {
 						e1.printStackTrace();
