@@ -11,6 +11,9 @@ import java.io.IOException;
  */
 public class DayNote extends Note
 {
+	/**
+	 * The date attached to the note.
+	 */
 	Date date;
 
 	/**
@@ -27,7 +30,13 @@ public class DayNote extends Note
 		this.date = date;
 	}
 	
-
+	/**
+	 * To create or edit a day note. 
+	 * If the path doesn't exist it's created. 
+	 * If the note exist, it's rewrite
+	 * Else it's created. 
+	 * @throws IOException
+	 */
 	public void editNote() throws IOException {
 		File file = null;
 		FileWriter write = null;
@@ -41,6 +50,9 @@ public class DayNote extends Note
 		write.close();
 	 }
 	
+	/**
+	 * To delete a day note.
+	 */
 	public void deleteNote(){
 		String path = "Notes/"+this.date.getDate()+"/"+this.number;
 		if(Path.checkPath(path)){
@@ -49,7 +61,10 @@ public class DayNote extends Note
 		}
 	}
 
-
+	/**
+	 * return the date attached. 
+	 * @return a Date
+	 */
 	public Date getDate() {
 		return date;
 	}

@@ -5,6 +5,7 @@ import java.util.StringTokenizer;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
 /**
  * This Class, extends JPanel, create multi line label and add this on his panel.
  * @author g19
