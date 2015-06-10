@@ -8,13 +8,21 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 import fr.iutvalence.java.Notit.Application;
-
+/**
+ * This is the main frame of he application.
+ * @author g19
+ *
+ */
 public class MainFrame extends JFrame{
 
 	private HomePagePanel homePage;
 	private CalendarPanel calendarPanel;
 	private Application application;
 
+	/**
+	 * the constructor of the frame.
+	 * @throws IOException
+	 */
 	public MainFrame() throws IOException{
 
 		System.setProperty("awt.useSystemAAFontSettings","on");
@@ -33,15 +41,27 @@ public class MainFrame extends JFrame{
 		this.setBackground(Color.WHITE);
 		this.setVisible(true);
 	}
-
+	
+	/**
+	 * return the calendarPanel, used by other Panel for switch to the calendarPanel.
+	 * @return
+	 */
 	public CalendarPanel getCalendarPanel() {
 		return calendarPanel;
 	}
 
+	/**
+	 * return the homePagePanel, used by other Panel for switch to the homePagePanel.
+	 * @return
+	 */
 	public HomePagePanel getHomePage() {
 		return homePage;
 	}
 	
+	/**
+	 * return the application.
+	 * @return
+	 */
 	public Application getApplication() {
 		return application;
 	}

@@ -20,7 +20,11 @@ import javax.swing.JSplitPane;
 
 import fr.iutvalence.java.Notit.Calendar;
 import fr.iutvalence.java.Notit.Date;
-
+/**
+ * This is the panel of the each month.
+ * @author g19
+ *
+ */
 public class MonthPanel extends JPanel implements ActionListener{
 
 	private MainFrame theFrame;
@@ -34,7 +38,13 @@ public class MonthPanel extends JPanel implements ActionListener{
 	private int currentYear;
 	private int theMonth;
 	private MonthPanel thisPanel;
-
+	
+	/**
+	 * the constructor of this panel.
+	 * @param calendar
+	 * @param frame
+	 * @throws IOException
+	 */
 	public MonthPanel(Calendar calendar, MainFrame frame) throws IOException{
 
 		this.theCalendar = calendar;
@@ -65,13 +75,11 @@ public class MonthPanel extends JPanel implements ActionListener{
 		this.monthOfYear.setForeground(new Color(192, 57, 43));
 		this.daysPanel = new JPanel(new GridLayout(1,7));
 
-
 		this.monthOfYear.setMinimumSize(new Dimension(1024,50));
 		this.daysPanel.setPreferredSize(new Dimension(1024,50));
 
 		this.daysPanel.setLayout(new GridLayout(1,7));
 		this.daysPanel.setBackground(Color.WHITE);
-
 
 		String[]  alphaDay = elementInYear.getWeekdays(); // alphaDay = different day in English
 		for(int day=1; day<=7; day++){
@@ -80,7 +88,6 @@ public class MonthPanel extends JPanel implements ActionListener{
 			theDay.setFont(new Font("Lao UI", 1, 15));
 			daysPanel.add(theDay);
 		}
-
 
 
 		/**
@@ -100,9 +107,10 @@ public class MonthPanel extends JPanel implements ActionListener{
 		this.tableButton = new MyButton[42];
 		int numberDay = 1;
 		
-		for(int numberCase=0; numberCase<42; numberCase++){
+		for(int numberCase=0; numberCase<42; numberCase++){ 
+			// create 42 buttons, disable useless button for the month and display the number of the day.
 			if (numberCase == theCalendar.getFirstDay()-1)
-			{
+			{ 
 				this.tableButton[numberCase]=new MyButton(Integer.toString(numberDay), numberDay);
 				this.tableButton[numberCase].addActionListener(this);
 				this.panelOfDaysButton.add(tableButton[numberCase]);
@@ -128,6 +136,9 @@ public class MonthPanel extends JPanel implements ActionListener{
 			}
 		}
 
+		/**
+		 * Layout and Visibility.
+		 */
 		this.add(this.homePageButton, BorderLayout.PAGE_START);
 		this.add(this.twoLabel, BorderLayout.CENTER);
 		this.add(this.panelOfDaysButton, BorderLayout.PAGE_END);
@@ -135,6 +146,9 @@ public class MonthPanel extends JPanel implements ActionListener{
 		this.setVisible(true);
 	}
 
+	/**
+	 * ActionListener
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 

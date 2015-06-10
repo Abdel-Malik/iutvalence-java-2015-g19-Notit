@@ -17,7 +17,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import fr.iutvalence.java.Notit.Date;
-
+/**
+ * This is the panel of the Calendar page of the application.
+ * @author g19
+ *
+ */
 public class CalendarPanel extends JPanel implements ActionListener{
 
 	private MainFrame theFrame;
@@ -26,22 +30,26 @@ public class CalendarPanel extends JPanel implements ActionListener{
 	private JLabel monthOfYear;
 	private JPanel panelOfMonthButton;
 	
+	/**
+	 * Constructor of the panel.
+	 * @param frame
+	 * @throws IOException
+	 */
 	public CalendarPanel(MainFrame frame) throws IOException{
 
 		this.theFrame=frame;
 		this.setBackground(Color.WHITE);
-
 		this.setSize(1024, 768); 
 
 		/**
-		 * the JButton
+		 * the JButton.
 		 */
 		this.toHomePagebutton = new Button(new ImageIcon("img/home.png"), new Dimension(1024,68), "  GO TO HOMEPAGE");
 		this.toHomePagebutton.setFont(new Font("LAO UI", 1, 32));
 		this.toHomePagebutton.setBackground(new Color(231, 76, 60));
 	  	this.toHomePagebutton.addActionListener(this);
 		/**
-		 * the JLabel
+		 * the JLabel.
 		 */
 		this.monthOfYear = new JLabel("Year "+ new Date().get(Date.YEAR), JLabel.CENTER); 
 		this.monthOfYear.setPreferredSize(new Dimension(1024,50));
@@ -49,13 +57,13 @@ public class CalendarPanel extends JPanel implements ActionListener{
 		this.monthOfYear.setForeground(new Color(192, 57, 43));
 		
 		/**
-		 * the Panel of button
+		 * the Panel of button.
 		 */
 		this.panelOfMonthButton = new JPanel();
 		this.panelOfMonthButton.setPreferredSize(new Dimension(1024,650));
 		this.panelOfMonthButton.setLayout(new GridLayout(4,3));
 		/**
-		 * Button of month
+		 * Button of month, create 12 buttons for the month of the year and put it in the table.
 		 */
 		DateFormatSymbols monthInYear = new DateFormatSymbols(Locale.ENGLISH); // monthinYear = English date format
 		String[] theMonth = monthInYear.getMonths(); // theMonth = different moth in the year in English
@@ -71,6 +79,9 @@ public class CalendarPanel extends JPanel implements ActionListener{
 			this.panelOfMonthButton.add(tableButton[month]);
 		}
 
+		/**
+		 * Layout and Visibility.
+		 */
 		this.add(toHomePagebutton, BorderLayout.PAGE_START);
 		this.add(monthOfYear, BorderLayout.CENTER);
 		this.add(panelOfMonthButton, BorderLayout.PAGE_END);
@@ -78,6 +89,9 @@ public class CalendarPanel extends JPanel implements ActionListener{
 		this.setVisible(true);
 	}
 
+	/**
+	 * ActionListener.
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		

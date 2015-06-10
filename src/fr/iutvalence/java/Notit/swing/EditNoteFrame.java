@@ -19,7 +19,11 @@ import javax.swing.JTextField;
 
 import fr.iutvalence.java.Notit.DayNote;
 import fr.iutvalence.java.Notit.GeneralNote;
-
+/**
+ * This new Frame allow to edit day and general Note.
+ * @author g19
+ *
+ */
 public class EditNoteFrame extends JFrame implements ActionListener{
 
 	private MainFrame theFrame;
@@ -34,7 +38,11 @@ public class EditNoteFrame extends JFrame implements ActionListener{
 	private DayNote dayNote;
 	private GeneralNote generalNote;
 	
-	
+	/**
+	 * 1st constructor, if the day note is edit on the HomePagePanel.
+	 * @param dayNote
+	 * @param frame
+	 */
 	public EditNoteFrame(DayNote dayNote, MainFrame frame){
 		
 		this.dayNote = dayNote;
@@ -48,6 +56,11 @@ public class EditNoteFrame extends JFrame implements ActionListener{
 
 	}
 	
+	/**
+	 * 2nd constructor, for the general note on the HomePagePanel.
+	 * @param generalNote
+	 * @param frame
+	 */
 	public EditNoteFrame(GeneralNote generalNote, MainFrame frame){
 		this.generalNote = generalNote;
 		/**
@@ -61,6 +74,12 @@ public class EditNoteFrame extends JFrame implements ActionListener{
 		
 	}
 	
+	/**
+	 * 3rd constructor, for the day note on the panel of the specific day.
+	 * @param dayNote
+	 * @param panel
+	 * @param frame
+	 */
 	public EditNoteFrame(DayNote dayNote, DayPanel panel, MainFrame frame){
 		
 		this.dayNote = dayNote;
@@ -75,7 +94,10 @@ public class EditNoteFrame extends JFrame implements ActionListener{
 
 	}
 	
-	
+	/**
+	 * This is the components of this Frame.
+	 * @param frame
+	 */
 	private void displayOfFrame(MainFrame frame){
 		this.setTitle("Not'It : Edition de note");
 		ImageIcon img = new ImageIcon("img/calendar_icon.png");
@@ -84,6 +106,7 @@ public class EditNoteFrame extends JFrame implements ActionListener{
 		this.setResizable(false); 
 		this.setLocationRelativeTo(null);
 		this.theFrame = frame;
+		
 		/**
 		 * JButton
 		 */
@@ -91,10 +114,10 @@ public class EditNoteFrame extends JFrame implements ActionListener{
 		this.editNoteButton.setBackground(new Color(231, 76, 60));
 		this.editNoteButton.setFont(new Font("Lao UI", 1, 20));
 		this.editNoteButton.addActionListener(this);
+		
 		/**
 		 * JLabel
 		 */
-		
 		this.titleLabel = new JLabel("Title :");
 		this.titleLabel.setFont(new Font("Lao UI", 1, 18));
 		this.contentsLabel = new JLabel("Contents :");
@@ -123,6 +146,9 @@ public class EditNoteFrame extends JFrame implements ActionListener{
 		this.titleSplitPane.setDividerSize(0);
 		this.contentsSplitPane.setDividerSize(0);
 				
+		/**
+		 * Layout and Visibility.
+		 */
 		this.add(titleSplitPane, BorderLayout.PAGE_START);
 		this.add(contentsSplitPane, BorderLayout.CENTER);
 		this.add(editNoteButton, BorderLayout.PAGE_END);
@@ -130,11 +156,14 @@ public class EditNoteFrame extends JFrame implements ActionListener{
 		this.setVisible(true);
 	}
 
+	/**
+	 * ActionListener.
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==this.editNoteButton)
 			if(this.generalNote!=null){
-				try {
+				try { // if we are on the HomePagePanel for GeneralNote
 					this.theFrame.getApplication().editGNotes(this.generalNote, this.titleText.getText(), this.contentsText.getText());
 					this.dispose();
 					this.theFrame.getHomePage().displayGeneralNote();
@@ -145,7 +174,7 @@ public class EditNoteFrame extends JFrame implements ActionListener{
 			else{
 				if(this.panel==null)
 				{
-					try {
+					try { // if we are on the HomePagePanel for DayNote
 						this.theFrame.getApplication().editDayNotes(this.dayNote, titleText.getText(), contentsText.getText());
 						this.dispose();
 						this.theFrame.getHomePage().displayDayNote();
@@ -154,7 +183,7 @@ public class EditNoteFrame extends JFrame implements ActionListener{
 					}
 				}
 				else{
-					try {
+					try { // if we are on the DayPanel 
 						this.theFrame.getApplication().editDayNotes(this.dayNote, titleText.getText(), contentsText.getText());
 						this.dispose();
 						this.panel.displayDayNotePanel();

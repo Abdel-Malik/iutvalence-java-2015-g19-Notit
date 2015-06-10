@@ -18,7 +18,11 @@ import javax.swing.border.EmptyBorder;
 import fr.iutvalence.java.Notit.Application;
 import fr.iutvalence.java.Notit.DayNote;
 import fr.iutvalence.java.Notit.GeneralNote;
-
+/**
+ * This is the panel of each note of the application.
+ * @author g19
+ *
+ */
 public class NotePanel extends JPanel implements ActionListener{
 
 	private JLabel noteName;
@@ -35,26 +39,48 @@ public class NotePanel extends JPanel implements ActionListener{
 	private JSplitPane optionSplit;
 	private JSplitPane noteSplit;
 
+	/**
+	 * 1st constructor, if the note is a GeneralNote.
+	 * @param generalNote
+	 * @param theFrame
+	 */
 	public NotePanel(GeneralNote generalNote, MainFrame theFrame){
 		this.generalNote=generalNote;
 		display(generalNote.getTitle(), generalNote.getContent(), theFrame);
 	}
 
+	/**
+	 * 2nd constructor, if the note is a DayNote, on the HomePageFrame.
+	 * @param dayNote
+	 * @param theFrame
+	 */
 	public NotePanel(DayNote dayNote, MainFrame theFrame){
 		this.dayNote = dayNote;
 		display(dayNote.getTitle(), dayNote.getContent(), theFrame);
 	}
 
+	/**
+	 * the 3rd constructor, if the note is a dayNote, one the DayPanel 'panel'.
+	 * @param dayNote
+	 * @param panel
+	 * @param theFrame
+	 */
 	public NotePanel(DayNote dayNote, DayPanel panel, MainFrame theFrame){
 		this.panel = panel;
 		this.dayNote = dayNote;
 		display(dayNote.getTitle(), dayNote.getContent(), theFrame);
 	}
 
+	/**
+	 * This is the components of this Panel.
+	 * @param name
+	 * @param content
+	 * @param theFrame
+	 */
 	public void display(String name, String content, MainFrame theFrame){
-		
+
 		this.setBackground(Color.WHITE);
-		
+
 		this.theFrame = theFrame;
 		this.application = theFrame.getApplication();
 		Dimension dimForButton = new Dimension(30, 30);
@@ -71,7 +97,7 @@ public class NotePanel extends JPanel implements ActionListener{
 		this.noteName.setPreferredSize(dimForTitle);
 		this.noteName.setFont(new Font("LAO UI", 1, 15));
 		this.noteName.setBorder(new EmptyBorder(0,10,0,0));
-		
+
 		this.descriptionNote = new MultiLineLabel(content);
 		this.descriptionNote.setBackground(Color.WHITE);
 		this.descriptionNote.setPreferredSize(dimForContent);
@@ -82,7 +108,7 @@ public class NotePanel extends JPanel implements ActionListener{
 		 */
 		this.deleteNote = new Button(new ImageIcon("img/close.png"), dimForButton);
 		this.deleteNote.setBackground(color);
-		
+
 		this.editNote = new Button(new ImageIcon("img/pencil.png"), dimForButton);
 		this.editNote.setBackground(color);
 
@@ -93,49 +119,52 @@ public class NotePanel extends JPanel implements ActionListener{
 		 */
 		this.buttonSplit = new JSplitPane(JSplitPane.VERTICAL_SPLIT, deleteNote, editNote);
 		this.labelSplit = new JSplitPane(JSplitPane.VERTICAL_SPLIT, noteName, descriptionNote);
-		
+
 		this.buttonSplit.setBorder(null);
 		this.labelSplit.setBorder(null);
 		this.labelSplit.setBackground(Color.WHITE);
 
 		this.buttonSplit.setDividerSize(0);
 		this.labelSplit.setDividerSize(0);
-		
+
 		JPanel designPanel = new JPanel();
 		designPanel.setBackground(new Color(231, 76, 60));
-		
+
 		this.optionSplit = new JSplitPane(JSplitPane.VERTICAL_SPLIT, this.buttonSplit, designPanel);
 		this.optionSplit.setDividerSize(0);
 		this.optionSplit.setBorder(null);
 
-		
+
 		this.noteSplit = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, this.optionSplit, this.labelSplit);
 		this.noteSplit.setDividerSize(0);
 		this.noteSplit.setBorder(null);
 		this.add(this.noteSplit);
 	}
 
+	/**
+	 * ActionListener
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
 		if(e.getSource()==this.deleteNote){     
-			
+
 			int jop = JOptionPane.showConfirmDialog(
-				    this.theFrame,
-				    "Would you delete this Not'it?",
-				    "Delete",
-				    JOptionPane.YES_NO_OPTION);
-			
+					this.theFrame,
+					"Would you delete this Not'it?",
+					"Delete",
+					JOptionPane.YES_NO_OPTION);
+
 			if(jop==JOptionPane.YES_OPTION){
-				if( this.generalNote == null){
+				if( this.generalNote == null){ //if the Note is a DayNote 
 					try {
-						this.application.deleteDayNotes(this.dayNote);
+						this.application.deleteDayNotes(this.dayNote); //delete DayNote
 					} catch (IOException e2) {
 						// TODO Auto-generated catch block
 						e2.printStackTrace();
 					}	
 
-					if(this.panel==null)
+					if(this.panel==null)//if the note is on the HomePagePanel
 					{
 						try {
 							this.theFrame.getHomePage().displayDayNote();
@@ -144,9 +173,9 @@ public class NotePanel extends JPanel implements ActionListener{
 							e1.printStackTrace();
 						}
 					}
-					else{
+					else{ // if the note is on the DayPanel
 						try {
-							this.panel.displayDayNotePanel();
+							this.panel.displayDayNotePanel(); 
 						} catch (IOException e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
@@ -154,7 +183,7 @@ public class NotePanel extends JPanel implements ActionListener{
 					}
 
 				}
-				else{
+				else{	// if the note is a GeneralNote
 					try {
 						this.application.deleteGNotes(this.generalNote);
 						this.theFrame.getHomePage().displayGeneralNote();

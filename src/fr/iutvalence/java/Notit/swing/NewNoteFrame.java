@@ -17,7 +17,11 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import fr.iutvalence.java.Notit.Date;
-
+/**
+ * This class open new frame when the user add new note.
+ * @author g19
+ *
+ */
 public class NewNoteFrame extends JFrame implements ActionListener{
 
 	private MainFrame theFrame;
@@ -31,21 +35,40 @@ public class NewNoteFrame extends JFrame implements ActionListener{
 	private Date date;
 	private DayPanel panel;
 	
+	/**
+	 * 1st constructor, if add general note in the HomePagePanel.
+	 * @param frame
+	 */
 	public NewNoteFrame(MainFrame frame){
 		displayOfFrame(frame);
 	}
 	
+	/**
+	 * 2nd constructor, if add day note in the HomePagePanel (for current day).
+	 * @param date
+	 * @param frame
+	 */
 	public NewNoteFrame(Date date, MainFrame frame){
 		this.date=date;
 		displayOfFrame(frame);
 	}
 	
+	/**
+	 * 3rd constructor, if add day note in the panel of the day (DayPanel).  
+	 * @param date
+	 * @param panel
+	 * @param frame
+	 */
 	public NewNoteFrame(Date date, DayPanel panel, MainFrame frame){
 		this.panel = panel;
 		this.date=date;
 		displayOfFrame(frame);
 	}
 	
+	/**
+	 * This is the components of this Frame.
+	 * @param frame
+	 */
 	private void displayOfFrame(MainFrame frame){
 		this.setTitle("Not'It : Nouvelle note");
 		ImageIcon img = new ImageIcon("img/calendar_icon.png");
@@ -97,6 +120,9 @@ public class NewNoteFrame extends JFrame implements ActionListener{
 		this.titleSplitPane.setDividerSize(0);
 		this.contentsSplitPane.setDividerSize(0);
 				
+		/**
+		 * Layout and Visibility.
+		 */
 		this.add(titleSplitPane, BorderLayout.PAGE_START);
 		this.add(contentsSplitPane, BorderLayout.CENTER);
 		this.add(addNoteButton, BorderLayout.PAGE_END);
@@ -104,10 +130,13 @@ public class NewNoteFrame extends JFrame implements ActionListener{
 		this.setVisible(true);
 	}
 
+	/**
+	 * ActionListener.
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==this.addNoteButton)
-			if(this.date==null){
+			if(this.date==null){ // if no date = GeneralNote 
 				try {
 					this.theFrame.getApplication().createGNotes(this.titleText.getText(), this.contentsText.getText());
 					this.dispose();
@@ -118,7 +147,7 @@ public class NewNoteFrame extends JFrame implements ActionListener{
 				}
 			}
 			else{
-				if(this.panel==null)
+				if(this.panel==null) // if no panel = dayNote of the HomePagePanel
 				{
 					try {
 						this.theFrame.getApplication().createDayNotes(this.titleText.getText(), this.contentsText.getText(), this.date);
@@ -129,7 +158,7 @@ public class NewNoteFrame extends JFrame implements ActionListener{
 					}
 				}
 				else{
-					try {
+					try { // dayNote of the DayPanel
 						this.theFrame.getApplication().createDayNotes(this.titleText.getText(), this.contentsText.getText(), this.date);
 						this.dispose();
 						this.theFrame.getHomePage().displayDayNote();

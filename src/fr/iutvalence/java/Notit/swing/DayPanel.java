@@ -17,6 +17,11 @@ import javax.swing.JSplitPane;
 import fr.iutvalence.java.Notit.Date;
 import fr.iutvalence.java.Notit.DayNote;
 
+/**
+ * This is the panel for each day.
+ * @author g19
+ *
+ */
 public class DayPanel extends JPanel implements ActionListener{
 
 	private MainFrame theFrame;
@@ -29,6 +34,13 @@ public class DayPanel extends JPanel implements ActionListener{
 	private Date theDate;
 	private JSplitPane allDay;
 	
+	/**
+	 * Constructor of the day panel.
+	 * @param theDate
+	 * @param theMonthPanel
+	 * @param frame
+	 * @throws IOException
+	 */
 	public DayPanel(Date theDate, MonthPanel theMonthPanel, MainFrame frame) throws IOException{
 
 		Dimension buttonDimension = new Dimension(50,40);
@@ -44,7 +56,6 @@ public class DayPanel extends JPanel implements ActionListener{
 		 * the Buttons.
 		 */
 		this.toMonthButton = new JButton("to Month");
-		
 		
 		this.toMonthButton = new Button(new ImageIcon("img/arrow-left.png"),new Dimension(1024, 68),"  GO TO MONTH");
 		this.toMonthButton.setFont(new Font("Lao UI", 1, 32));
@@ -88,14 +99,21 @@ public class DayPanel extends JPanel implements ActionListener{
 		this.allDay.setDividerSize(0);
 		this.allDay.setBorder(null);
 
+		/**
+		 * Layout and Visibility.
+		 */
 		this.add(toMonthButton, BorderLayout.PAGE_START);
 		this.add(allDay, BorderLayout.CENTER);
 		
 		this.displayDayNotePanel();
-		
 		this.setVisible(true);
 	}
 	
+	/**
+	 * Display the note (DayNote / NotePanel) of the day in the 'notePanel'.
+	 * Refresh the Panel if we add new DayNote.
+	 * @throws IOException
+	 */
 	public void displayDayNotePanel() throws IOException{
 		this.setVisible(false);
 		this.notePanel.removeAll();
@@ -107,6 +125,9 @@ public class DayPanel extends JPanel implements ActionListener{
 		this.setVisible(true);
 	}
 
+	/**
+	 * ActionListener.
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		 
