@@ -29,7 +29,13 @@ public class Path {
 		File file = new File(path);
 		file.mkdirs();
 	}
-
+	
+	/**
+	 * To return the higher id of a note.  
+	 * 
+	 * @param path
+	 * @return (max+1) the id for a new note
+	 */
 	public static int maxFileInPath(String path) {
 		int max = 0;
 		if(checkPath(path)){

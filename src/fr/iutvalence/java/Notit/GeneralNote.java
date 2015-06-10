@@ -11,18 +11,20 @@ import java.io.IOException;
 public class GeneralNote extends Note
 {
 	/**
-	 * GeneralNote's constructor.
+	 * GeneralNote's constructor 
 	 * @param number
 	 * @param title
 	 * @param content
 	 */
 	public GeneralNote(int number, String title, String content) {
 		super(number, title, content);
-		// TODO Auto-generated constructor stub
 	}
 	
 	/**
-	 * Edit the note.
+	 * To create or edit a general note. 
+	 * If the path doesn't exist it's created. 
+	 * If the note exist, it's rewrite
+	 * Else it's created.
 	 * @throws IOException
 	 */
 	public void editNote() throws IOException {
@@ -40,6 +42,7 @@ public class GeneralNote extends Note
 	
 	/**
 	 * Delete the note.
+	 * To delete a general note.
 	 */
 	public void deleteNote(){
 		String path = "GeneralNotes"+"/"+this.number;

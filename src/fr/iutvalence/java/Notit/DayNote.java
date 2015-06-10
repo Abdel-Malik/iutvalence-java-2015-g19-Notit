@@ -31,7 +31,10 @@ public class DayNote extends Note
 	}
 	
 	/**
-	 * Edit the note.
+	 * To create or edit a day note. 
+	 * If the path doesn't exist it's created. 
+	 * If the note exist, it's rewrite
+	 * Else it's created. 
 	 * @throws IOException
 	 */
 	public void editNote() throws IOException {
@@ -48,7 +51,7 @@ public class DayNote extends Note
 	 }
 	
 	/**
-	 * Delete the note.
+	 * To delete a day note.
 	 */
 	public void deleteNote(){
 		String path = "Notes/"+this.date.getDate()+"/"+this.number;
@@ -59,8 +62,8 @@ public class DayNote extends Note
 	}
 
 	/**
-	 * Getter to get the date attached.
-	 * @return Date
+	 * return the date attached. 
+	 * @return a Date
 	 */
 	public Date getDate() {
 		return date;

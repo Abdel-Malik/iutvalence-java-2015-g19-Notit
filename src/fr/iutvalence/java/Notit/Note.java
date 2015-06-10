@@ -70,6 +70,11 @@ public abstract class Note {
 		this.content = content;
 	}	
 	
+	/**
+	 * Getter to get the number of a note.
+	 * 
+	 * @return the number of the note
+	 */
 	public int getNumber() {
 		return number;
 	}
