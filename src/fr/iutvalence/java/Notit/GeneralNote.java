@@ -9,18 +9,26 @@ import java.io.IOException;
  * @author G19
  */
 public class GeneralNote extends Note{
-/**
- * GeneralNote's constructor 
- * @param number
- * @param title
- * @param content
- */
+
+	/**
+	 * GeneralNote's constructor 
+	 * @param number
+	 * @param title
+	 * @param content
+	 */
 	public GeneralNote(int number, String title, String content) {
 		super(number, title, content);
 		// TODO Auto-generated constructor stub
 	}
 	
-
+	/**
+	 * To create or edit a general note. 
+	 * If the path doesn't exist it's created. 
+	 * If the note exist, it's rewrite
+	 * Else it's created. 
+	 * 
+	 * @throws IOException
+	 */
 	public void editNote() throws IOException {
 		File file = null;
 		FileWriter write = null;
@@ -34,6 +42,9 @@ public class GeneralNote extends Note{
 		write.close();
 	}
 	
+	/**
+	 * To delete a general note. 
+	 */
 	public void deleteNote(){
 		String path = "GeneralNotes"+"/"+this.number;
 		if(Path.checkPath(path)){
