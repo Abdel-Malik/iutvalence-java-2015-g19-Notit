@@ -70,7 +70,7 @@ public class NewNoteFrame extends JFrame implements ActionListener{
 	 * @param frame
 	 */
 	private void displayOfFrame(MainFrame frame){
-		this.setTitle("Not'It : Nouvelle note");
+		this.setTitle("Not'It : new note");
 		ImageIcon img = new ImageIcon("img/calendar_icon.png");
 		this.setIconImage(img.getImage());
 		this.setSize(500, 380); 
